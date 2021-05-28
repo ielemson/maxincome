@@ -21,6 +21,17 @@
 </head>
 
 <body>
+
+     <!--====== PREALOADER  START ======-->
+     <div class="preloader">
+      <div class="preloader-body">
+          <div class="cssload-container">
+          <div class="cssload-speeding-wheel"></div>
+          </div>
+          <p>Loading...</p>
+      </div>
+  </div>
+  <!--====== PREALOADER  ENDS  ======-->
   <div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
@@ -65,7 +76,7 @@
             <div class="btn-group">
               <button class="btn btn-primary submit-btn ">Login</button>
               &nbsp;
-              <a class="btn btn-info submit-btn " href="/">Go back</a>
+              <a class="btn btn-warning submit-btn " href="/">Go back</a>
             </div>
                 </div>
                 <div class="form-group d-flex justify-content-between">
@@ -102,12 +113,21 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
-  <script src="{{asset('login_css/vendors/js/vendor.bundle.base.js')}}"></script>
-  <script src="{{asset('login_css/vendors/js/vendor.bundle.addons.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  {{-- <script src="{{asset('login_css/vendors/js/vendor.bundle.base.js')}}"></script> --}}
+  {{-- <script src="{{asset('login_css/vendors/js/vendor.bundle.addons.js')}}"></script> --}}
   <!-- endinject -->
   <!-- inject:js -->
-  <script src="{{asset('login_css/js/template.js')}}"></script>
+  {{-- <script src="{{asset('login_css/js/template.js')}}"></script> --}}
   <!-- endinject -->
+
+  <script>
+    $(window).on('load',function(){
+    setTimeout(function(){ // allowing 3 secs to fade out loader
+    $('.preloader').fadeOut('slow');
+    },2000);
+    });
+    </script>
 </body>
 
 

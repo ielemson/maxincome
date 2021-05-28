@@ -2,7 +2,10 @@
     
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="{{url('/')}}">MaxIncome<span>.</span></a></h1>
+      <h1 class="logo"><a href="{{url('/')}}">
+        
+        <img src="/img/logo.png"/>
+        <span></span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
 

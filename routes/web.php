@@ -29,6 +29,10 @@ Route::get('/', function () {
 
 	return view('home');
 });
+Route::get('/email-check', function () {
+
+	return view('mail.email_verfication');
+});
 
 
 Route::post('/authenticate', 'userAuthController@authenticate')->name('user_auth');

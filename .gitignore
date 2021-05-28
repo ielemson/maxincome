@@ -9,3 +9,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+DB_DATABASE=maxihkvk_maxincome
+DB_USERNAME=maxihkvk_maxincome_user
+DB_PASSWORD=E#4^Z6m)5a02

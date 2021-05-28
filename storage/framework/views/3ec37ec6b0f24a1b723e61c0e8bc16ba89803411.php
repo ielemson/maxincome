@@ -1,6 +1,5 @@
-@extends('inc.auth_layout')
-<title>Verify Account - {{env('APP_NAME')}}</title>
-@section('content')
+<title>Verify Account - <?php echo e(env('APP_NAME')); ?></title>
+<?php $__env->startSection('content'); ?>
 <body>
     <div class="verify_form_cont">
         <img src="/img/adult.jpg" class="fixedOverlayIMG">         
@@ -13,42 +12,49 @@
                         <div class="panel ">
                             <div class="card-header">
                                 <div align="center">
-                                     <img src="/img/{{$settings->site_logo}}" alt="{{$settings->site_title}}" class="" style="width: 100%">                 
+                                     <img src="/img/<?php echo e($settings->site_logo); ?>" alt="<?php echo e($settings->site_title); ?>" class="" style="width: 100%">                 
                                     <br>
-                                    {{-- <h3 class="colhd"><i class="fa fa-key"></i>{{ __('User Verification') }} </h3> --}}
+                                    
                                     <hr>
                                 </div>
                             </div>
                             <div class="panel-body" style="">
-                                @if(Session::has('msgType') && Session::get('msgType') == 'err')
+                                <?php if(Session::has('msgType') && Session::get('msgType') == 'err'): ?>
                                 
                                     <div class="alert alert-danger">
-                                        {{Session::get('status')}}
+                                        <?php echo e(Session::get('status')); ?>
+
                                     </div>
-                                    {{Session::forget('status')}}
-                                    {{Session::forget('msgType')}}
+                                    <?php echo e(Session::forget('status')); ?>
+
+                                    <?php echo e(Session::forget('msgType')); ?>
+
                                     
-                                @elseif(Session::has('msgType') && Session::get('msgType') == 'suc')
+                                <?php elseif(Session::has('msgType') && Session::get('msgType') == 'suc'): ?>
                                 
                                     <div class="alert alert-success">
-                                        {{Session::get('status')}}
+                                        <?php echo e(Session::get('status')); ?>
+
                                     </div>
-                                    {{Session::forget('status')}}
-                                    {{Session::forget('msgType')}}
-                                @else
+                                    <?php echo e(Session::forget('status')); ?>
+
+                                    <?php echo e(Session::forget('msgType')); ?>
+
+                                <?php else: ?>
                                 
                                     <div class="alert alert-danger">
                                        <p>
-                                           {{ __('Invalid access to this page.') }}
+                                           <?php echo e(__('Invalid access to this page.')); ?>
+
                                        </p>
                                     </div>
                                      
-                                @endif
+                                <?php endif; ?>
 
                                 <div class="form-group row mb-0">
                                     <div class="" align="center">
                                        <p>
-                                           <strong><a href="/login" class="collcc btn btn-warning">{{ __('Back to Login') }}</a></strong>
+                                           <strong><a href="/login" class="collcc btn btn-warning"><?php echo e(__('Back to Login')); ?></a></strong>
                                        </p>                            
                                     </div>
                                 </div>
@@ -59,4 +65,5 @@
             </div>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('inc.auth_layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\ielemson\Desktop\Apps\Laravel\maxincome\resources\views/auth/act_verify.blade.php ENDPATH**/ ?>

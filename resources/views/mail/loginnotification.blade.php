@@ -12,14 +12,14 @@
 </head>
 <body>
 	<div align="">
-		<img src="http://{{env('MAIL_SENDER')}}/img/{{$st->site_logo}}" style="height:100px; width:100px;" align="center">
+		<img src="http://{{env('MAIL_FROM_ADDRESS')}}/img/{{$st->site_logo}}" style="height:100px; width:100px;" align="center">
 	</div>
 	<h3 align=""> Hi {{$md['username']}}</h3>
 	<p>
 		This is to notify you that there is a login into your account a moment ago.<br>
 		If you were not the one please contact support now for a quick action.<br>
 		<br>
-		Contact support now: support{{'@'.env('MAIL_SENDER')}}
+		Contact support now:{{.env('MAIL_FROM_ADDRESS')}}
 	</p>
 	<p>
 		<i class="fa fa-certificate"></i> Thanks for using {{$st->site_title}}.

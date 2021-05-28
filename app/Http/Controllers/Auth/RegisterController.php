@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Mail;
-
+use App\Mail\Email_Verification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 
@@ -42,7 +42,7 @@ class RegisterController extends Controller
     
     private $token;
     private $email;
-    private $usr;
+    private $user_name;
     private $st;
 
     /**
@@ -85,7 +85,7 @@ class RegisterController extends Controller
         $this->token = mt_rand(0000, 9999).strtotime(date("Y-m-d H:i:s"));
         //Session::forget('ref');
         // $this->email = $data['email'];
-        // $this->usr = $data['username'];
+        // $this->user_name = $data['username'];
         
        $user =  User::create([
             'firstname' => trim($data['Fname']),
@@ -101,7 +101,7 @@ class RegisterController extends Controller
             'currency' => $this->st->currency,
         ]);
        
-        $this->usr = $user->name;
+        $this->user_name = $user->username;
         $this->email = $user->email;
 
         $user_verification = new user_verification();
@@ -118,21 +118,35 @@ class RegisterController extends Controller
         
         try
         {
-            Session::flush();
-            Session::put('success', 'Registration Successful. Please check your email address inbox or spam folder to confirm and activate your account.'); 
+            // Session::flush();
+            // Session::put('success', 'Registration Successful. Please check your email address inbox or spam folder to confirm and activate your account.'); 
             
-            $maildata = ['email' => $this->email, 'usr' => $this->usr, 'token' => $this->token];
-            Mail::send('mail.regconfirm', ['md' => $maildata], function($msg) use ($maildata){
-                $msg->from(env('MAIL_USERNAME'), $this->st->site_title);
-                $msg->to($maildata['email']);
-                $msg->subject('User Account Activation');
-            }); 
+            // $maildata = ['email' => $this->email, 'user_name' => $this->user_name, 'token' => $this->token];
+            // Mail::send('mail.regconfirm', ['md' => $maildata], function($msg) use ($maildata){
+            //     $msg->from(env('MAIL_USERNAME'), $this->st->site_title);
+            //     $msg->to($maildata['email']);
+            //     $msg->subject('User Account Activation');
+            // }); 
+
+             $data = [
+            'username'=>$this->user_name,
+            'email'=>$this->email,
+            'token' => $this->token
+             ];
+            Mail::to($data['email'])->send(new Email_Verification($data));
+
+            Session::flush();
+            Session::flash('success', 'Registration Successful. Please check your email address inbox or spam folder to confirm and activate your account.'); 
+
             return '/login';
+            // return route('login')->withSuccess('Registration Successful. Please check your email address inbox or spam folder to confirm and activate your account.!');
+
         }
         catch(\Exception $e)
         {
             Session::flush();
-            Session::put('error', $e->getMessage().'Registration successful! We are having problem sending mail. Please contact support for activation'); 
+            Session::flash('error', $e->getMessage().'Registration successful! We are having problem sending mail. Please contact support for activation'); 
+            // return route('login')->withError("$e->getMessage().Registration successful! We are having problem sending mail. Please contact support for activation!");
             return '/login';
         }
         
