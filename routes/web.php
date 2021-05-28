@@ -129,6 +129,7 @@ Route::post('/user/wallet/wd', 'userController@user_wallet_wd')->middleware('aut
 Route::post('/user/ref/wd', 'userController@user_ref_wd')->middleware('auth');
 Route::post('/user/deposit/fund', 'userController@user_deposit_trans')->middleware('auth');
 Route::post('/user/add/btc_wallet', 'userController@addBtcWallet')->middleware('auth');
+Route::post('/user/verify_id', 'userController@verify_user_identity')->middleware('auth')->name('verify_user_id');
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

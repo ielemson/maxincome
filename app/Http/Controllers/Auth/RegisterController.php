@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\URL;
 
 use App\activities;
 use App\user_verification;
+use App\kyc;
 use Session;
 
 use App\site_settings;
@@ -104,9 +105,10 @@ class RegisterController extends Controller
         $this->user_name = $user->username;
         $this->email = $user->email;
 
-        $user_verification = new user_verification();
+        $user_verification = new kyc();
 
         $user_verification->user_id = $user->id;
+        $user_verification->username = $user->username;
         $user_verification->save();
 
         return $user;

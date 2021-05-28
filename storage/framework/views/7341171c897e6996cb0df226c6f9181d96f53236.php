@@ -112,7 +112,7 @@
                                 <td style="padding: 0 30px">
                                     <h4 style="font-size: 15px; color: #000000; font-weight: 600; margin: 0; text-transform: uppercase; margin-bottom: 10px">or</h4>
                                     <p style="margin-bottom: 10px;">If the button above does not work, paste this link into your web browser:</p>
-                                    <a href="#" style="color: #ff3722; text-decoration:none;word-break: break-all;"><?php echo e(env('MAIL_SENDER')); ?></a>
+                                    <a href="https://<?php echo e(env('MAIL_SENDER')); ?>/registration/confirm/<?php echo e($data['username']); ?>/<?php echo e($data['token']); ?>" style="color: #ff3722; text-decoration:none;word-break: break-all;">https://<?php echo e(env('MAIL_SENDER')); ?>/registration/confirm/<?php echo e($data['username']); ?>/<?php echo e($data['token']); ?></a>
                                 </td>
                             </tr>
                             <tr>

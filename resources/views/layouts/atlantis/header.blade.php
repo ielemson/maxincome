@@ -209,7 +209,7 @@
 					</div>
 					<ul class="nav nav-primary">
 						
-					@if ($user->verification->status == true)
+			
 					<li class="nav-item">
 						<a href="/{{$user->username}}/dashboard">
 							<i class="fas fa-layer-group"></i>
@@ -281,15 +281,7 @@
 							<p>Logout</p>
 						</a>							
 					</li>	
-					@else
-					<li class="nav-item">
-						<a href="/logout">
-							<i class="fas fa-arrow-right"></i>
-							<p>Logout</p>
-						</a>							
-					</li>
-					@endif
-
+				
 						
 					</ul>
 				</div>

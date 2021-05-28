@@ -4,38 +4,40 @@
             <?php                
                 $invs = App\packages::where('status', 1)->orderby('id', 'asc')->get();                
             ?>
-            @if($user->phone != '')
-                @if(isset($invs) && count($invs) > 0)
-                    @foreach($invs as $inv)
+            <?php if($user->phone != ''): ?>
+                <?php if(isset($invs) && count($invs) > 0): ?>
+                    <?php $__currentLoopData = $invs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $inv): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="col-sm-4">
                             <div class="panel card pack-container" style="" align="center">
                                 <div class="panel-head" style="">
-                                    <h3 class="txt_transform">{{$inv->package_name}} {{ __('Package') }}</h3>
+                                    <h3 class="txt_transform"><?php echo e($inv->package_name); ?> <?php echo e(__('Package')); ?></h3>
                                 </div>
                                 <div class="" align="center" >
                                     <br>
                                         <h4 class="u_case" >
-                                            <strong>{{ __('Period of Investment') }}</strong>
+                                            <strong><?php echo e(__('Period of Investment')); ?></strong>
                                         </h4>
                                         <div style="font-size: 40px;">
                                             <b>
-                                                {{$inv->period}}
+                                                <?php echo e($inv->period); ?>
+
                                             </b>
                                         </div>
                                         <span class="pk_num">
-                                                {{__('Days')}}
+                                                <?php echo e(__('Days')); ?>
+
                                         </span>
                                 </div>
                                 <span align="center">..............................</span>
                                 <div class="" align="center" style="">
                                         <h4 class="u_case" >
-                                            <strong>{{ __('Min Investment') }}</strong>
+                                            <strong><?php echo e(__('Min Investment')); ?></strong>
                                         </h4>
-                                        <span class="pk_num">{{$settings->currency}} {{$inv->min}}</span>
+                                        <span class="pk_num"><?php echo e($settings->currency); ?> <?php echo e($inv->min); ?></span>
                                         <h4 class="u_case">
-                                            <strong>{{ __('Max Investment') }}</strong>
+                                            <strong><?php echo e(__('Max Investment')); ?></strong>
                                         </h4>
-                                        <span class="pk_num">{{$settings->currency}} {{$inv->max}}</span>
+                                        <span class="pk_num"><?php echo e($settings->currency); ?> <?php echo e($inv->max); ?></span>
                                 </div>                                                    
                                 
                                 <span align="center">..............................</span>
@@ -43,20 +45,21 @@
                                     <h4 class="u_case">
                                         <strong>Total Interest</strong>
                                     </h4>         
-                                     <span class="pk_num">{{$inv->daily_interest*$inv->period*100}}%</span>
+                                     <span class="pk_num"><?php echo e($inv->daily_interest*$inv->period*100); ?>%</span>
                                 </div>
                                  <div class="" align="center">
                                     <h4 class="u_case">
                                        <strong> Withdrawal Interval</strong>
                                     </h4> 
-                                    <span class="pk_num">{{$inv->days_interval}} Days</span>
+                                    <span class="pk_num"><?php echo e($inv->days_interval); ?> Days</span>
                                 </div>
                                 <div class="" align="center">
-                                    <p>{{ __('Capital accessible after investment elapses.') }}</p>
+                                    <p><?php echo e(__('Capital accessible after investment elapses.')); ?></p>
                                 </div>
                                 <div class="" align="center">
-                                        <a id="{{$inv->id}}" href="javascript:void(0)" class="collcc btn btn-info" onclick="confirm_inv('{{$inv->id}}', '{{$inv->package_name}}', '{{$inv->period}}', '{{$inv->daily_interest}}', '{{$inv->min}}', '{{$inv->max}}', '{{$user->wallet}}')">
-                                            {{ __('Invest') }}
+                                        <a id="<?php echo e($inv->id); ?>" href="javascript:void(0)" class="collcc btn btn-info" onclick="confirm_inv('<?php echo e($inv->id); ?>', '<?php echo e($inv->package_name); ?>', '<?php echo e($inv->period); ?>', '<?php echo e($inv->daily_interest); ?>', '<?php echo e($inv->min); ?>', '<?php echo e($inv->max); ?>', '<?php echo e($user->wallet); ?>')">
+                                            <?php echo e(__('Invest')); ?>
+
                                         </a>
                                         <br><br>
                                 </div>
@@ -64,13 +67,13 @@
                             </div>
                         </div>
                                                                           
-                    @endforeach
-                @endif
-            @else
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <?php endif; ?>
+            <?php else: ?>
                 <div class="alert alert-warning mx-auto">
-                    <a href="/{{$user->username}}/profile#userdet"><strong>{{ __('Please, click here to update your profile before you can invest.') }}</strong></a>
+                    <a href="/<?php echo e($user->username); ?>/profile#userdet"><strong><?php echo e(__('Please, click here to update your profile before you can invest.')); ?></strong></a>
                 </div>
-            @endif
+            <?php endif; ?>
         </div>
     </div>
-</div>
+</div><?php /**PATH C:\Users\ielemson\Desktop\Apps\Laravel\maxincome\resources\views/user/inc/packages.blade.php ENDPATH**/ ?>

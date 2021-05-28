@@ -64,6 +64,10 @@ class User extends Authenticatable
 
             return $this->belongsTo(user_verification::class,'id','user_id');
         }
+        public function kyc(){
+
+            return $this->belongsTo(user_verification::class,'id','user_id');
+        }
 
      
 }

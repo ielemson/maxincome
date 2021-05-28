@@ -211,7 +211,7 @@
 					</div>
 					<ul class="nav nav-primary">
 						
-					<?php if($user->verification->status == true): ?>
+			
 					<li class="nav-item">
 						<a href="/<?php echo e($user->username); ?>/dashboard">
 							<i class="fas fa-layer-group"></i>
@@ -283,15 +283,7 @@
 							<p>Logout</p>
 						</a>							
 					</li>	
-					<?php else: ?>
-					<li class="nav-item">
-						<a href="/logout">
-							<i class="fas fa-arrow-right"></i>
-							<p>Logout</p>
-						</a>							
-					</li>
-					<?php endif; ?>
-
+				
 						
 					</ul>
 				</div>

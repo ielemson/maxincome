@@ -17,7 +17,8 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="<?php echo e(asset('login_css/css/style.css')); ?>">
     <!-- endinject -->
-    <link rel="shortcut icon" href="<?php echo e(asset('login_css/images/favicon.png')); ?>" />
+<link href="/img/fav-icon.png" rel="icon">
+<link href="img/fav-icon.png" rel="apple-touch-icon">
 </head>
 
 <body>
