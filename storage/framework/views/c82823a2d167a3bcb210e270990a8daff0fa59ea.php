@@ -11,9 +11,7 @@
 		<div class="page-inner mt--5">
 			<?php echo $__env->make('user.atlantis.overview', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-			<?php if($user->verification->status == false): ?>
-				<?php echo $__env->make('user.authenticate.authform', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-			<?php else: ?>
+	
 			<div id="prnt"></div>
 			<div class="row">
 				<div class="col-md-8">
@@ -137,7 +135,7 @@
 					</div>
 				</div>
 			</div>
-			<?php endif; ?>
+			
 			
 		</div>
 	</div>

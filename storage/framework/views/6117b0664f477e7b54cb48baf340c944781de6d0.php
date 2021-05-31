@@ -28,7 +28,7 @@
 
 <?php if($errors->any()): ?>
 <div class="alert alert-danger" role="alert">
-    <?php echo e('Error! An was encountered, please attend to it or contact support'); ?>
+    <?php echo e('An was encountered, please contact admin if it persists!'); ?>
 
     </div>
 <?php endif; ?>

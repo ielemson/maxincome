@@ -38,6 +38,14 @@
                 <div class="row w-100 mx-auto">
                     <div class="col-lg-6 mx-auto">
                         <div class="auto-form-wrapper">
+
+                            <div class=" mb-3 mx-auto" align="center">
+                                <img src="/img/fav-icon.png" alt="{{$settings->site_title}}" class="img-responsive" style="width: 10%"> 
+                                <br>
+                                {{-- <h3><i class="fa fa-key"></i> Password Recovery</h3> --}}
+                            </div>
+                
+
                             @include('partials._alerts')
 
                             <form method="POST" action="{{ route('register') }}">

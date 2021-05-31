@@ -39,11 +39,19 @@
         <div class="row w-100 mx-auto">
           <div class="col-lg-4 mx-auto">
             <div class="auto-form-wrapper">
+
+              <div class="mx-auto" align="center">
+                <img src="/img/fav-icon.png" alt="{{$settings->site_title}}" class="img-responsive" style="width: 10%"> 
+                <br>
+                {{-- <h3><i class="fa fa-key"></i> Password Recovery</h3> --}}
+            </div>
+
+            
               @include('partials._alerts')
 
               <form method="POST" action="{{route('user_auth')}}" > 
                 @csrf
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <label for="email">{{ __('E-Mail Address') }}</label>
                   <div class="input-group">
                     <input id="email" type="email" class="form-control  form-control-lg @error('email') is-invalid @enderror " name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="E-Mail Address">
@@ -57,10 +65,22 @@
                       <span class="input-group-text"><i class="icon-check"></i></span>
                     </div>
                   </div>
+                </div> --}}
+
+                <div class="form-group">
+                  <label for="email">{{ __('E-Mail Address') }}</label>
+                  <input id="email" type="email" class="form-control  form-control-lg @error('email') is-invalid @enderror " name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="E-Mail Address">
+
+                  @error('email')
+                      <span class="invalid-feedback" role="alert alert-danger" >
+                          {{ $message }}
+                      </span>
+                  @enderror
                 </div>
+
+
                 <div class="form-group">
                   <label class="label">Password</label>
-                  <div class="input-group">
                     <input id="password" type="password" class="form-control  form-control-lg @error('password') is-invalid @enderror " name="password" required autocomplete="current-password" placeholder="Password">
 
                     @error('password')
@@ -68,10 +88,7 @@
                             {{ $message }}
                         </span>
                     @enderror
-                    <div class="input-group-append">
-                      <span class="input-group-text"><i class="icon-check"></i></span>
-                    </div>
-                  </div>
+                    
                 </div>
                 <div class="form-group">
             <div class="btn-group">
@@ -87,7 +104,7 @@
                       Keep me signed in
                     </label>
                   </div>
-                  <a href="#" class="text-small forgot-password text-black">Forgot Password</a>
+                  <a href="{{ route('password.request') }}" class="text-small forgot-password text-black">Forgot Password</a>
                 </div>
                 {{-- <div class="form-group">
                   <button class="btn btn-block g-login_css"><img class="mr-3" src="/login_css/images/file-icons/icon-google.svg" alt="">Log in with Google</button>

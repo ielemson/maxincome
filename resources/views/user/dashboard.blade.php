@@ -11,9 +11,7 @@
 		<div class="page-inner mt--5">
 			@include('user.atlantis.overview')
 
-			@if ($user->verification->status == false)
-				@include('user.authenticate.authform')
-			@else
+	
 			<div id="prnt"></div>
 			<div class="row">
 				<div class="col-md-8">
@@ -136,7 +134,7 @@
 					</div>
 				</div>
 			</div>
-			@endif
+			
 			
 		</div>
 	</div>

@@ -250,7 +250,7 @@
 					<li class="nav-item">
 						<a href="/{{$user->username}}/downlines">
 							<i class="fas fa-users"></i>
-							<p>Downlines</p>
+							<p>Referrals</p>
 						</a>							
 					</li>
 					<li class="nav-item">

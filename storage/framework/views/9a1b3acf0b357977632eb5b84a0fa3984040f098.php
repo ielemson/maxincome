@@ -39,14 +39,23 @@
         <div class="row w-100 mx-auto">
           <div class="col-lg-4 mx-auto">
             <div class="auto-form-wrapper">
+
+              <div class="mx-auto" align="center">
+                <img src="/img/fav-icon.png" alt="<?php echo e($settings->site_title); ?>" class="img-responsive" style="width: 10%"> 
+                <br>
+                
+            </div>
+
+            
               <?php echo $__env->make('partials._alerts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
               <form method="POST" action="<?php echo e(route('user_auth')); ?>" > 
                 <?php echo csrf_field(); ?>
+                
+
                 <div class="form-group">
                   <label for="email"><?php echo e(__('E-Mail Address')); ?></label>
-                  <div class="input-group">
-                    <input id="email" type="email" class="form-control  form-control-lg <?php $__errorArgs = ['email'];
+                  <input id="email" type="email" class="form-control  form-control-lg <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -55,27 +64,24 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?> " name="email" value="<?php echo e(old('email')); ?>" required autocomplete="email" autofocus placeholder="E-Mail Address">
 
-                    <?php $__errorArgs = ['email'];
+                  <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                        <span class="invalid-feedback" role="alert alert-danger" >
-                            <?php echo e($message); ?>
+                      <span class="invalid-feedback" role="alert alert-danger" >
+                          <?php echo e($message); ?>
 
-                        </span>
-                    <?php unset($message);
+                      </span>
+                  <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                    <div class="input-group-append">
-                      <span class="input-group-text"><i class="icon-check"></i></span>
-                    </div>
-                  </div>
                 </div>
+
+
                 <div class="form-group">
                   <label class="label">Password</label>
-                  <div class="input-group">
                     <input id="password" type="password" class="form-control  form-control-lg <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -98,10 +104,7 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                    <div class="input-group-append">
-                      <span class="input-group-text"><i class="icon-check"></i></span>
-                    </div>
-                  </div>
+                    
                 </div>
                 <div class="form-group">
             <div class="btn-group">
@@ -117,7 +120,7 @@ unset($__errorArgs, $__bag); ?>
                       Keep me signed in
                     </label>
                   </div>
-                  <a href="#" class="text-small forgot-password text-black">Forgot Password</a>
+                  <a href="<?php echo e(route('password.request')); ?>" class="text-small forgot-password text-black">Forgot Password</a>
                 </div>
                 
                 <div class="text-block text-center my-3">

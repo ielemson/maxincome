@@ -12,6 +12,7 @@ use Session;
 use Hash;
 use File;
 use Auth;
+use DB;
 use App\User;
 use App\banks;
 use App\activities;
@@ -81,21 +82,21 @@ class userController extends Controller
         if($user->status == 0 || $user->status == 'New' || $user->status == 'pending')
         {
             Session::flush();
-            Session::put('err_msg', 'Account not activated');
+            Session::flash('err_msg', 'Account not activated');
             return '/login'; //->withErrors(['msg', 'Account not activated']);             
         }
         if($user->status == 2 || $user->status == 'Blocked')
         {
             Session::flush();
-            Session::put('err_msg', 'Account Blocked! Please contact support.');
+            Session::flash('err_msg', 'Account Blocked! Please contact support.');
             return '/login'; //->withErrors(['msg', 'Account not activated']);             
         }
 
         if($user->sec_2fa_status == 1)
         {
-          Session::put('temp_login_email', $req['email']);
-          Session::put('temp_login_pwd', $req['password']);
-          Session::put('temp_2fa_key', $user->sec_2fa);
+          Session::flash('temp_login_email', $req['email']);
+          Session::flash('temp_login_pwd', $req['password']);
+          Session::flash('temp_2fa_key', $user->sec_2fa);
 
           Auth::logout();
           return view('user.enter_otp');
@@ -201,14 +202,14 @@ class userController extends Controller
           $act->user_id = $user->id;
           $act->save();
 
-          Session::put('status', "Successful");
-          Session::put('msgType', "suc");
+          Session::flash('status', "Successful");
+          Session::flash('msgType', "suc");
           return back();
       	}
       	catch(\Exception $e)
       	{
-    		  Session::put('status', "Error uploading image or invalid image file");
-          Session::put('msgType', "err");
+    		  Session::flash('status', "Error uploading image or invalid image file");
+          Session::flash('msgType', "err");
         	return back();;
       	}
           
@@ -232,8 +233,8 @@ class userController extends Controller
       	    {
       	        if($usr[0]->act_code == 0000000000)
       	        {
-      	            Session::put('status', "Account already activated once");
-                      Session::put('msgType', "err");
+      	            Session::flash('status', "Account already activated once");
+                      Session::flash('msgType', "err");
       	        }
       	        elseif($usr[0]->act_code == $code)
       	        {
@@ -241,20 +242,20 @@ class userController extends Controller
           	        $usr[0]->act_code = 0000000000;
                       $usr[0]->save();
                       
-                      Session::put('status', "Account activation successful");
-                      Session::put('msgType', "suc");
+                      Session::flash('status', "Account activation successful");
+                      Session::flash('msgType', "suc");
       	        }
       	        else
       	        {
-      	            Session::put('status', "Invalid activation code passed!");
-                      Session::put('msgType', "err");
+      	            Session::flash('status', "Invalid activation code passed!");
+                      Session::flash('msgType', "err");
       	        }
       	    }
       	    else
       	    {
       	        
-                  Session::put('status', "Account Activation Error");
-                  Session::put('msgType', "err");
+                  Session::flash('status', "Account Activation Error");
+                  Session::flash('msgType', "err");
                   
       	    }
       		 
@@ -262,8 +263,8 @@ class userController extends Controller
       	}
       	catch(\Exception $e)
       	{
-      		Session::put('status', $e->getMessage()."Error Updating your account. Please contact support");
-              Session::put('msgType', "err");
+      		Session::flash('status', $e->getMessage()."Error Updating your account. Please contact support");
+              Session::flash('msgType', "err");
           	return view('auth.act_verify');
       	}
           
@@ -275,20 +276,20 @@ class userController extends Controller
      	$user = Auth::User();
      	if(!empty($user))
      	{       		 
-          if($req->input('newpwd') == $req->input('cpwd'))
+          if($req->inflash('newpwd') == $req->inflash('cpwd'))
           {
-          	if($req->input('newpwd') == $req->input('oldpwd'))
+          	if($req->inflash('newpwd') == $req->inflash('oldpwd'))
           	{            			                
-                Session::put('status', "You cannot use same old password! Please use a different password.");
-                Session::put('msgType', "err");
+                Session::flash('status', "You cannot use same old password! Please use a different password.");
+                Session::flash('msgType', "err");
                 return back();
           	}
           	try
         	{
                 $usr = User::find($user->id);
-                if(Hash::check($req->input('oldpwd'), $user->pwd))
+                if(Hash::check($req->inflash('oldpwd'), $user->pwd))
                 {
-                	$usr->pwd = Hash::make($req->input('newpwd'));
+                	$usr->pwd = Hash::make($req->inflash('newpwd'));
 	                $usr->save();
 
                       $act = new activities;
@@ -296,29 +297,29 @@ class userController extends Controller
                       $act->user_id = $user->id;
                       $act->save();
   		                
-  		            Session::put('status', "Password Successfully Changed");
-                      Session::put('msgType', "suc");
+  		            Session::flash('status', "Password Successfully Changed");
+                      Session::flash('msgType', "suc");
   		            return back();
                 }
                 else
                 {
-                	Session::put('status', "Old Password invalid! Try again");
-                      Session::put('msgType', "err");
+                	Session::flash('status', "Old Password invalid! Try again");
+                      Session::flash('msgType', "err");
                       return back();
             		// return back();
                 }	                
         	}
         	catch(\Exception $e)
         	{
-        		Session::put('status', "Error saving password! Try again");
-                  Session::put('msgType', "err");
+        		Session::flash('status', "Error saving password! Try again");
+                  Session::flash('msgType', "err");
   	            return back();
         	}
           }
           else
           {
-          	Session::put('status', "Password do not macth");
-            Session::put('msgType', "err");
+          	Session::flash('status', "Password do not macth");
+            Session::flash('msgType', "err");
             return back();;
           }	        	
           
@@ -341,12 +342,12 @@ class userController extends Controller
                'phone' => 'required|digits_between:8,15',            
             ]);
 
-      		  //$country = country::find($req->input('country'))        		
+      		  //$country = country::find($req->inflash('country'))        		
             $usr = User::find($user->id);	                
-          	$usr->country = $req->input('country');
-          	$usr->state = $req->input('state');
-          	$usr->address = $req->input('adr');
-          	$usr->phone = $req->input('cCode').$req->input('phone');
+          	$usr->country = $req->inflash('country');
+          	$usr->state = $req->inflash('state');
+          	$usr->address = $req->inflash('adr');
+          	$usr->phone = $req->inflash('cCode').$req->inflash('phone');
                           	
             $usr->save();	
 
@@ -356,15 +357,15 @@ class userController extends Controller
             $act->save();
 
 
-            Session::put('status', "Profile Update Successfully");
-            Session::put('msgType', "suc");
+            Session::flash('status', "Profile Update Successfully");
+            Session::flash('msgType', "suc");
             return back();
               	                
       	}
       	catch(\Exception $e)
       	{
-      		Session::put('status', "Error saving your data! Please make sure your number is valid");
-          Session::put('msgType', "err");
+      		Session::flash('status', "Error saving your data! Please make sure your number is valid");
+          Session::flash('msgType', "err");
           return back();
       	}                	
           
@@ -386,9 +387,9 @@ class userController extends Controller
       	{     		
           $bank = new banks;	                
         	$bank->user_id = $user->id;
-        	$bank->Account_name = $req->input('act_name');
-        	$bank->Account_number = $req->input('actNo');
-        	$bank->Bank_Name = $req->input('bname');         	
+        	$bank->Account_name = $req->inflash('act_name');
+        	$bank->Account_number = $req->inflash('actNo');
+        	$bank->Bank_Name = $req->inflash('bname');         	
           	
           $bank->save();		  
 
@@ -400,16 +401,16 @@ class userController extends Controller
 
 
           
-          Session::put('status', "Your Bank Has Been Added Successfully");
-          Session::put('msgType', "suc");
+          Session::flash('status', "Your Bank Has Been Added Successfully");
+          Session::flash('msgType', "suc");
               
           return back();
               	                
       	}
       	catch(\Exception $e)
       	{
-      		  Session::put('status', "Error saving details! Account may exist. Please Try again");
-            Session::put('msgType', "err");
+      		  Session::flash('status', "Error saving details! Account may exist. Please Try again");
+            Session::flash('msgType', "err");
           	return back();
       	}                	
           
@@ -436,15 +437,15 @@ class userController extends Controller
               $act->user_id = $user->id;
               $act->save();
 
-              Session::put('status', "Bank Deleted Successfully");
-              Session::put('msgType', "suc");
+              Session::flash('status', "Bank Deleted Successfully");
+              Session::flash('msgType', "suc");
               return back();
               	                
       	}
       	catch(\Exception $e)
       	{
-          Session::put('status', 'Error saving details! Account may exist. Please Try again');
-          Session::put('msgType', "err");        		  
+          Session::flash('status', 'Error saving details! Account may exist. Please Try again');
+          Session::flash('msgType', "err");        		  
           return back();
       	}                	
           
@@ -464,22 +465,22 @@ class userController extends Controller
 
       if($this->st->investment != 1 )
       {
-        Session::put('msgType', "err");              
-        Session::put('status', 'Investment disabled! You will be notified when it is available.');
+        Session::flash('msgType', "err");              
+        Session::flash('status', 'Investment disabled! You will be notified when it is available.');
         return back();
       }
 
       if($user->status == 'Blocked' || $user->status == 2 )
       {
-        Session::put('msgType', "err");              
-        Session::put('status', 'Account Blocked! Please contact support.');
+        Session::flash('msgType', "err");              
+        Session::flash('status', 'Account Blocked! Please contact support.');
         return redirect('/login');
       }
 
       if($user->status == 'pending' || $user->status == 0 )
       {
-        Session::put('msgType', "err");              
-        Session::put('status', 'Account not activated! Please contact support.');
+        Session::flash('msgType', "err");              
+        Session::flash('status', 'Account not activated! Please contact support.');
         return redirect('/login');
       }
 
@@ -490,34 +491,34 @@ class userController extends Controller
           
         try
         {     
-          $capital = $req->input('capital');
-          $pack = packages::find($req->input('p_id'));
+          $capital = $req->inflash('capital');
+          $pack = packages::find($req->inflash('p_id'));
 
           if($user->wallet < $capital)
           {
-            Session::put('status', 'Your wallet balance is lower than capital.');
-            Session::put('msgType', "err");
+            Session::flash('status', 'Your wallet balance is lower than capital.');
+            Session::flash('msgType', "err");
             return back();
           }
           
           if($user->wallet < $pack->min)
           {
-            Session::put('status', 'Wallet balance is lower than minimum investment.');
-            Session::put('msgType', "err");
+            Session::flash('status', 'Wallet balance is lower than minimum investment.');
+            Session::flash('msgType', "err");
             return back();
           }
           
           if($capital > $pack->max)
           {
-            Session::put('status', 'Input Capital is greater than maximum investment.');
-            Session::put('msgType', "err");
+            Session::flash('status', 'Inflash Capital is greater than maximum investment.');
+            Session::flash('msgType', "err");
             return back();
           }
           
           if($capital < $pack->min)
           {
-            Session::put('status', 'Input Capital is less than minimum investment.');
-            Session::put('msgType', "err");
+            Session::flash('status', 'Inflash Capital is less than minimum investment.');
+            Session::flash('msgType', "err");
             return back();
           }
 
@@ -637,22 +638,22 @@ class userController extends Controller
             $act->user_id = $user->id;
             $act->save();
 
-            Session::put('status', "Investment Successful");
-            Session::put('msgType', "suc");
+            Session::flash('status', "Investment Successful");
+            Session::flash('msgType', "suc");
             return back() ;
           }
           else
           {
-            Session::put('status', "Invalid amount! Try again.");
-            Session::put('msgType', "err");
+            Session::flash('status', "Invalid amount! Try again.");
+            Session::flash('msgType', "err");
             return back();
           }            
                                 
         }
         catch(\Exception $e)
         {
-            Session::put('status', "Error creating investment! Please Try again.".$e->getMessage());
-            Session::put('msgType', "err");
+            Session::flash('status', "Error creating investment! Please Try again.".$e->getMessage());
+            Session::flash('msgType', "err");
             return back();
         }                 
           
@@ -671,15 +672,15 @@ class userController extends Controller
 
       if($user->status == 'pending' || $user->status == 0 )
       {
-        Session::put('msgType', "err");              
-        Session::put('status', 'Account not activated! Please contact support.');
+        Session::flash('msgType', "err");              
+        Session::flash('status', 'Account not activated! Please contact support.');
         return redirect('/login');
       }
 
       if($user->status == 'Blocked' || $user->status == 2 )
       {
-        Session::put('msgType', "err");              
-        Session::put('status', 'Account Blocked! Please contact support.');
+        Session::flash('msgType', "err");              
+        Session::flash('status', 'Account Blocked! Please contact support.');
         return redirect('/login');
       }
 
@@ -690,26 +691,26 @@ class userController extends Controller
         try
         {  
 
-          $amt = $req->input('amt');
+          $amt = $req->inflash('amt');
           
-          if($req->input('pack_type') == 'xpack')
+          if($req->inflash('pack_type') == 'xpack')
           {
-              $pack = xpack_inv::find($req->input('p_id'));
+              $pack = xpack_inv::find($req->inflash('p_id'));
           }
           else
           {
-              $pack = investment::find($req->input('p_id'));
+              $pack = investment::find($req->inflash('p_id'));
           }
           
 
           if($amt <= 0)
           {
-            Session::put('msgType', "err");              
-            Session::put('status', 'Invalid amount/Package Expired');
+            Session::flash('msgType', "err");              
+            Session::flash('status', 'Invalid amount/Package Expired');
             return back();
           }
 
-          if($req->input('ended') == 'yes')
+          if($req->inflash('ended') == 'yes')
           {
             if($pack->status != 'Expired')
             {
@@ -750,15 +751,15 @@ class userController extends Controller
           $act->user_id = $user->id;
           $act->save();
 
-          Session::put('status', 'Package Withdrawal Successful, Amount Withdrawn Has Been Added to your Wallet');
-          Session::put('msgType', "suc");
+          Session::flash('status', 'Package Withdrawal Successful, Amount Withdrawn Has Been Added to your Wallet');
+          Session::flash('msgType', "suc");
           return back();
 
         }
         catch(\Exception $e)
         {
-          Session::put('status', 'Error submitting your withdrawal');
-          Session::put('msgType', "err");
+          Session::flash('status', 'Error submitting your withdrawal');
+          Session::flash('msgType', "err");
           return back();
         }
           
@@ -777,36 +778,36 @@ class userController extends Controller
       
       if($this->st->withdrawal != 1 )
       {
-        Session::put('msgType', "err");              
-        Session::put('status', 'Withdrawal disabled! Please contact support.');
+        Session::flash('msgType', "err");              
+        Session::flash('status', 'Withdrawal disabled! Please contact support.');
         return back();
       }
 
       if($user->status == 'Blocked' || $user->status == 2 )
       {
-        Session::put('msgType', "err");              
-        Session::put('status', 'Account Blocked! Please contact support.');
+        Session::flash('msgType', "err");              
+        Session::flash('status', 'Account Blocked! Please contact support.');
         return back();
       }
 
       if($user->status == 'pending' || $user->status == 0 )
       {
-        Session::put('msgType', "err");              
-        Session::put('status', 'Account not activated! Please contact support.');
+        Session::flash('msgType', "err");              
+        Session::flash('status', 'Account not activated! Please contact support.');
         return back();
       }
 
-      if(intval($req->input('amt')) > intval($user->wallet) || intval($req->input('amt')) == 0 )
+      if(intval($req->inflash('amt')) > intval($user->wallet) || intval($req->inflash('amt')) == 0 )
       {
-        Session::put('msgType', "err");              
-        Session::put('status', 'Invalid withdrawal amount. Amount must be greater than zero(0) and not more than wallet balance');
+        Session::flash('msgType', "err");              
+        Session::flash('status', 'Invalid withdrawal amount. Amount must be greater than zero(0) and not more than wallet balance');
         return back();
       }  
 
-      if(intval($req->input('amt')) > env('WD_LIMIT'))
+      if(intval($req->inflash('amt')) > env('WD_LIMIT'))
       {
-        Session::put('msgType', "err");              
-        Session::put('status', env('WD_LIMIT').' Withdrawal limit exceeded!');
+        Session::flash('msgType', "err");              
+        Session::flash('status', env('WD_LIMIT').' Withdrawal limit exceeded!');
         return back();
       }
 
@@ -817,7 +818,7 @@ class userController extends Controller
         {  
 
           $usr = User::find($user->id);
-          $usr->wallet -= intval($req->input('amt'));
+          $usr->wallet -= intval($req->inflash('amt'));
           $usr->save();
 
           $wd = new withdrawal;
@@ -825,12 +826,12 @@ class userController extends Controller
           $wd->usn = $user->username;
           $wd->package = 'wallet';
           $wd->invest_id = $user->id;
-          $wd->amount = intval($req->input('amt'));
-          $wd->account = $req->input('bank');
+          $wd->amount = intval($req->inflash('amt'));
+          $wd->account = $req->inflash('bank');
           $wd->w_date = date('Y-m-d');
           $wd->currency = $user->currency;
-          $wd->charges = $charge = intval($req->input('amt'))*env('WD_FEE');
-          $wd->recieving = intval($req->input('amt'))-$charge;
+          $wd->charges = $charge = intval($req->inflash('amt'))*env('WD_FEE');
+          $wd->recieving = intval($req->inflash('amt'))-$charge;
           $wd->save();
 
           $act = new activities;
@@ -853,14 +854,14 @@ class userController extends Controller
           });
 
           $wd_fee = env("WD_FEE")*100;
-          Session::put('status', 'Wallet Withdrawal Successful! Note: Withdrawal attracts '.$wd_fee.'% processing fee');
-          Session::put('msgType', "suc");
+          Session::flash('status', 'Wallet Withdrawal Successful! Note: Withdrawal attracts '.$wd_fee.'% processing fee');
+          Session::flash('msgType', "suc");
           return back();
         }
         catch(\Exception $e)
         {
-          Session::put('status', $e->getMessage());
-          Session::put('msgType', "err");
+          Session::flash('status', $e->getMessage());
+          Session::flash('msgType', "err");
           return back();
         }
           
@@ -878,43 +879,43 @@ class userController extends Controller
 
       if(env('WITHDRAWAL') != 1  )
       {
-        Session::put('msgType', "err");              
-        Session::put('status', 'Withdrawal disabled! Please contact support.');
+        Session::flash('msgType', "err");              
+        Session::flash('status', 'Withdrawal disabled! Please contact support.');
         return back();
       }
 
       if($user->status == 'Blocked' || $user->status == 2 )
       {
-        Session::put('msgType', "err");              
-        Session::put('status', 'Account Blocked! Please contact support.');
+        Session::flash('msgType', "err");              
+        Session::flash('status', 'Account Blocked! Please contact support.');
         return back();
       }
 
       if($user->status == 'pending' || $user->status == 0 )
       {
-        Session::put('msgType', "err");              
-        Session::put('status', 'Account not activated! Please contact support.');
+        Session::flash('msgType', "err");              
+        Session::flash('status', 'Account not activated! Please contact support.');
         return back();
       }
 
-      if(intval($req->input('amt')) < env('MIN_WD'))
+      if(intval($req->inflash('amt')) < env('MIN_WD'))
         {
-          Session::put('msgType', "err");              
-          Session::put('status', 'Amount is lower than minimum withdrawal of '.env('MIN_WD'));
+          Session::flash('msgType', "err");              
+          Session::flash('status', 'Amount is lower than minimum withdrawal of '.env('MIN_WD'));
           return back();
         }
 
-      if(intval($req->input('amt')) > env('WD_LIMIT'))
+      if(intval($req->inflash('amt')) > env('WD_LIMIT'))
       {
-        Session::put('msgType', "err");              
-        Session::put('status', env('WD_LIMIT').' Withdrawal limit exceeded!');
+        Session::flash('msgType', "err");              
+        Session::flash('status', env('WD_LIMIT').' Withdrawal limit exceeded!');
         return back();
       } 
 
-      if(intval($req->input('amt')) > intval($user->ref_bal) || intval($req->input('amt')) == 0)
+      if(intval($req->inflash('amt')) > intval($user->ref_bal) || intval($req->inflash('amt')) == 0)
       {
-        Session::put('msgType', "err");              
-        Session::put('status', 'Invalid withdrawal amount. Amount must be greater than zero(0) and not more than referral balance');
+        Session::flash('msgType', "err");              
+        Session::flash('status', 'Invalid withdrawal amount. Amount must be greater than zero(0) and not more than referral balance');
         return back();
       }
 
@@ -924,8 +925,8 @@ class userController extends Controller
         $iv = investment::where('user_id', $user->id)->get();
         if(count($iv) < 1)
         {
-          Session::put('msgType', "err");              
-          Session::put('status', 'Sorry you have to invest at least once before you can withdraw your referral bonus.');
+          Session::flash('msgType', "err");              
+          Session::flash('status', 'Sorry you have to invest at least once before you can withdraw your referral bonus.');
           return back();
         }
                   
@@ -933,7 +934,7 @@ class userController extends Controller
         {  
 
           $usr = User::find($user->id);
-          $usr->ref_bal -= intval($req->input('amt'));
+          $usr->ref_bal -= intval($req->inflash('amt'));
           $usr->save();
 
           $wd = new withdrawal;
@@ -941,12 +942,12 @@ class userController extends Controller
           $wd->usn = $user->username;
           $wd->package = 'ref_bonus';
           $wd->invest_id = $user->id;
-          $wd->amount = intval($req->input('amt'));
-          $wd->account = $req->input('bank');
+          $wd->amount = intval($req->inflash('amt'));
+          $wd->account = $req->inflash('bank');
           $wd->w_date = date('Y-m-d');
           $wd->currency = $user->currency;
-          $wd->charges = $charge = intval($req->input('amt'))*env('WD_FEE');
-          $wd->recieving = intval($req->input('amt'))-$charge;
+          $wd->charges = $charge = intval($req->inflash('amt'))*env('WD_FEE');
+          $wd->recieving = intval($req->inflash('amt'))-$charge;
           $wd->save();
 
           $act = new activities;
@@ -968,15 +969,15 @@ class userController extends Controller
               $msg->subject('User Withdrawal Notification');
           });
          
-          Session::put('status', 'Referral Withdrawal Successful, Please Allow up to 10 Business Days for Payment Processing');
-          Session::put('msgType', "suc");
+          Session::flash('status', 'Referral Withdrawal Successful, Please Allow up to 10 Business Days for Payment Processing');
+          Session::flash('msgType', "suc");
           return back();
 
         }
         catch(\Exception $e)
         {
-          Session::put('status', $e->getMessage().' Error submitting your withdrawal');
-          Session::put('msgType', "err");
+          Session::flash('status', $e->getMessage().' Error submitting your withdrawal');
+          Session::flash('msgType', "err");
           return back();
         }
           
@@ -1033,15 +1034,15 @@ class userController extends Controller
 
       if($user->status == 'Blocked' || $user->status == 2 )
       {
-        Session::put('msgType', "err");              
-        Session::put('status', 'Account Blocked! Please contact support.');
+        Session::flash('msgType', "err");              
+        Session::flash('status', 'Account Blocked! Please contact support.');
         return back();
       }
 
       if($user->status == 'pending' || $user->status == 0 )
       {
-        Session::put('msgType', "err");              
-        Session::put('status', 'Account not activated! Please contact support.');
+        Session::flash('msgType', "err");              
+        Session::flash('status', 'Account not activated! Please contact support.');
         return back();
       }
 
@@ -1059,8 +1060,8 @@ class userController extends Controller
           ]);
 
           if($validator->fails()){
-            Session::put('msgType', "err");              
-            Session::put('status', $validator->errors()->first());
+            Session::flash('msgType', "err");              
+            Session::flash('status', $validator->errors()->first());
             return back();
           }
           
@@ -1069,11 +1070,11 @@ class userController extends Controller
           $wd->usn = $user->username;
           // $wd->package = 'ref_bonus';
           // $wd->invest_id = $user->id;
-          $wd->amount = intval($req->input('p_amt'));
-          $wd->account_name = $req->input('act_name');
-          $wd->account_no = $req->input('act_no');
+          $wd->amount = intval($req->inflash('p_amt'));
+          $wd->account_name = $req->inflash('act_name');
+          $wd->account_no = $req->inflash('act_no');
           $wd->currency = $user->currency;
-          $wd->bank = $req->input('y_bank');
+          $wd->bank = $req->inflash('y_bank');
 
           $file = $req->file('pop');
           $path =  $user->username.time().'.jpg';
@@ -1083,19 +1084,19 @@ class userController extends Controller
           $wd->save();
 
           $act = new activities;
-          $act->action = "User deposited ".$user->currency.intval($req->input('p_amt'))." through bank transfer.";
+          $act->action = "User deposited ".$user->currency.intval($req->inflash('p_amt'))." through bank transfer.";
           $act->user_id = $user->id;
           $act->save();
 
-          Session::put('status', 'Your Deposit Details Has Been Received, Admin Will Confirm and Approve Payment');
-          Session::put('msgType', "suc");
+          Session::flash('status', 'Your Deposit Details Has Been Received, Admin Will Confirm and Approve Payment');
+          Session::flash('msgType', "suc");
           return back();
 
         }
         catch(\Exception $e)
         {
-          Session::put('status', $e->getMessage().' Error submitting your withdrawal');
-          Session::put('msgType', "err");
+          Session::flash('status', $e->getMessage().' Error submitting your withdrawal');
+          Session::flash('msgType', "err");
           return back();
         }
           
@@ -1110,7 +1111,7 @@ class userController extends Controller
   public function payment_suc($amt, Request $req)
   {        
       $user = Auth::User();        
-      if($req->input('event') == 'successful' && $req->input('txref') == Session::get('pay_ref'))
+      if($req->inflash('event') == 'successful' && $req->inflash('txref') == Session::get('pay_ref'))
       {
           try
           {
@@ -1119,9 +1120,9 @@ class userController extends Controller
             $dep->usn = $user->username;
             $dep->amount = $amt; //Session::get('payAmt');
             $dep->currency = $user->currency;
-            $dep->account_name =  $req->input('flwref');
+            $dep->account_name =  $req->inflash('flwref');
             // $dep->account_no = $_GET['flwref'];
-            $dep->bank       = 'Ref:'.$req->input('txref');
+            $dep->bank       = 'Ref:'.$req->inflash('txref');
             $dep->status = 1;
             $dep->on_apr = 1;
             $user->wallet += intval($amt);
@@ -1131,30 +1132,30 @@ class userController extends Controller
 
             Session::forget('pay_ref');
   
-            Session::put('status', 'Payment Successful');      
-            Session::put('msgType', "suc");
-            Session::put('payment_complete', "yes");
+            Session::flash('status', 'Payment Successful');      
+            Session::flash('msgType', "suc");
+            Session::flash('payment_complete', "yes");
             return redirect('/'.$user->username.'/dashboard');
             
               $act = new activities;
-              $act->action = "User deposited ".$user->currency.intval($req->input('p_amt'))." through flutterwave.";
+              $act->action = "User deposited ".$user->currency.intval($req->inflash('p_amt'))." through flutterwave.";
               $act->user_id = $user->id;
               $act->save();
           }
           catch(\Eception $e)
           {
-              Session::put('status', 'Error updating wallet.');      
-              Session::put('msgType', "err");
-              Session::put('payment_complete', "yes");
+              Session::flash('status', 'Error updating wallet.');      
+              Session::flash('msgType', "err");
+              Session::flash('payment_complete', "yes");
               return redirect('/'.$user->username.'/wallet');
           }
 
       }
       else
       {
-        Session::put('status', 'Invalid Payment credentials');      
-        Session::put('msgType', "err");
-        Session::put('payment_complete', "yes");
+        Session::flash('status', 'Invalid Payment credentials');      
+        Session::flash('msgType', "err");
+        Session::flash('payment_complete', "yes");
         return redirect('/'.$user->username.'/wallet');
       }
 
@@ -1164,10 +1165,10 @@ class userController extends Controller
   public function reset_pwd(Request $req)
   {        
       // $user = Auth::User();        
-      if($req->input('password') != $req->input('c_pwd'))
+      if($req->inflash('password') != $req->inflash('c_pwd'))
       {
-          Session::put('status', 'Password not match!');      
-          Session::put('msgType', "err");
+          Session::flash('status', 'Password not match!');      
+          Session::flash('msgType', "err");
           return back();
       }
       
@@ -1177,8 +1178,8 @@ class userController extends Controller
       ]);
 
       if($validator->fails()){
-        Session::put('msgType', "err");              
-        Session::put('status', $validator->errors()->first());
+        Session::flash('msgType', "err");              
+        Session::flash('status', $validator->errors()->first());
         return back();
       }
       
@@ -1189,16 +1190,16 @@ class userController extends Controller
           {
               if($usr[0]->remember_token != '' && Hash::check(Session::get('reset_pwd_token'), $usr[0]->remember_token))
               {
-                  $usr[0]->pwd = Hash::make($req->input('password'));
+                  $usr[0]->pwd = Hash::make($req->inflash('password'));
                   $usr[0]->remember_token = '';
                   $usr[0]->save();
                   
                   // Session::forget('reset_pwd_token');
                   Session::forget('reset_pwd_usn');
                   
-                  Session::put('status', 'Password reset Successful. You can now login.');      
-                  Session::put('msgType', "suc");
-                  Session::put('pwd_rst_suc', "successful");
+                  Session::flash('status', 'Password reset Successful. You can now login.');      
+                  Session::flash('msgType', "suc");
+                  Session::flash('pwd_rst_suc', "successful");
                   return back();
               }
               else
@@ -1208,15 +1209,15 @@ class userController extends Controller
           }
           else
           {
-            Session::put('status', 'User with this email not found or token expired!');      
-            Session::put('msgType', "err");
+            Session::flash('status', 'User with this email not found or token expired!');      
+            Session::flash('msgType', "err");
             return back();
           }
       }
       catch(\Exception $e)
       {
-          Session::put('status', 'Error Updating your password!');      
-          Session::put('msgType', "err");
+          Session::flash('status', 'Error Updating your password!');      
+          Session::flash('msgType', "err");
           return back();
       }
 
@@ -1231,48 +1232,51 @@ class userController extends Controller
           'email' => 'required|email' , 
       ]);
 
-      if($validator->fails()){
-        Session::put('msgType', "err");              
-        Session::put('status', $validator->errors()->first());
-        return back();
-      }
+      dd($req);
+
+      // if($validator->fails()){
+      //   Session::flash('msgType', "err");              
+      //   Session::flash('status', $validator->errors()->first());
+      //   return back();
+      // }
       
-      try
-      {
-          $usr = User::where('email', $req->input('email'))->get();
-          if(count($usr) > 0)
-          {
-              $token = time();
+      // try
+      // {
+      //     $usr = User::where('email', $req->inflash('email'))->get();
+      //     if(count($usr) > 0)
+      //     {
+      //         $token = time();
+      //         pswd_recovery_token
               
-              $usr[0]->remember_token = Hash::make($token);
-              $usr[0]->save();
+      //         $usr[0]->remember_token = Hash::make($token);
+      //         $usr[0]->save();
               
-              $maildata = ['email' => $usr[0]->email, 'username' => $usr[0]->username, 'token' => $token ];
-              Mail::send('mail.pwd_req', ['md' => $maildata], function($msg) use ($maildata){
-                  $msg->from(env('MAIL_USERNAME'), env('APP_NAME'));
-                  $msg->to($maildata['email']);
-                  $msg->subject('Password Reset');
-              });
+      //         $maildata = ['email' => $usr[0]->email, 'username' => $usr[0]->username, 'token' => $token ];
+      //         Mail::send('mail.pwd_req', ['md' => $maildata], function($msg) use ($maildata){
+      //             $msg->from(env('MAIL_USERNAME'), env('APP_NAME'));
+      //             $msg->to($maildata['email']);
+      //             $msg->subject('Password Reset');
+      //         });
               
-              Session::forget('pwd_rst_suc');
-              Session::put('status', 'Password reset link sent to email. Try again after some times if not received.');      
-              Session::put('msgType', "suc");
-              return back();
+      //         Session::forget('pwd_rst_suc');
+      //         Session::flash('status', 'Password reset link sent to email. Try again after some times if not received.');      
+      //         Session::flash('msgType', "suc");
+      //         return back();
     
-          }
-          else
-          {
-            Session::put('status', 'User with this email not found!');      
-            Session::put('msgType', "err");
-            return back();
-          }
-      }
-      catch(\Exception $e)
-      {
-          Session::put('status', 'Error sending password reset mail. Please try again later or contact support.');      
-          Session::put('msgType', "err");
-          return back();
-      }
+      //     }
+      //     else
+      //     {
+      //       Session::flash('status', 'User with this email not found!');      
+      //       Session::flash('msgType', "err");
+      //       return back();
+      //     }
+      // }
+      // catch(\Exception $e)
+      // {
+      //     Session::flash('status', 'Error sending password reset mail. Please try again later or contact support.');      
+      //     Session::flash('msgType', "err");
+      //     return back();
+      // }
 
   }
   
@@ -1280,18 +1284,17 @@ class userController extends Controller
   
   public function pwd_req_verify($usn, $token)
   {        
-      $usr = User::where('username', $usn)->get();
-      if(Hash::check($token, $usr[0]->remember_token))
+      $usr = User::where('username', $usn)->first();
+      
+     $reset_user =  DB::table('password_resets')->where('token' , $token)->first();
+
+      if($reset_user != null)
       {
-          Session::put('reset_pwd_usn', $usr[0]->username);
-          Session::put('reset_pwd_token', $token);
-          return view('auth.passwords.reset');
+          return view('auth.passwords.reset',compact('reset_user','usr'))->with('success','Reset Your Password');
+      }else{
+        return view('auth.passwords.reset',compact('reset_user','usr'))->with('error','Reset Your Password');
       }
-      else
-      {
-          Session::put('pwd_reset_err', 'Password reset username or token is invalid. Link may have expired.');
-          return view('auth.passwords.reset');
-      }
+     
 
   }
   
@@ -1311,78 +1314,78 @@ class userController extends Controller
       ]);
 
       if($validator->fails()){
-          Session::put('err_send', $validator->errors()->first());
-          Session::put('status', $validator->errors()->first());      
-          Session::put('msgType', "err");
+          Session::flash('err_send', $validator->errors()->first());
+          Session::flash('status', $validator->errors()->first());      
+          Session::flash('msgType', "err");
           return back();
       }
       
-      if($user->username == $req->input('usn'))
+      if($user->username == $req->inflash('usn'))
       {
-          Session::put('err_send', "You cannot send fund to yourself");
-          Session::put('status', 'You cannot send fund to yourself');      
-          Session::put('msgType', "err");
+          Session::flash('err_send', "You cannot send fund to yourself");
+          Session::flash('status', 'You cannot send fund to yourself');      
+          Session::flash('msgType', "err");
           return back();
       }        
      
       if($user->wallet < 10)
       {
-          Session::put('err_send', "Wallet balance is less than minimum!");
-          Session::put('status', 'Wallet balance is less than minimum!');      
-          Session::put('msgType', "err");
+          Session::flash('err_send', "Wallet balance is less than minimum!");
+          Session::flash('status', 'Wallet balance is less than minimum!');      
+          Session::flash('msgType', "err");
           return back();
       }
       
               
-      if($user->wallet < intval($req->input('s_amt')) )
+      if($user->wallet < intval($req->inflash('s_amt')) )
       {
-          Session::put('err_send', "Wallet balance is lower than input amount!");
-          Session::put('status', 'Wallet balance is lower than input amount!');      
-          Session::put('msgType', "err");
+          Session::flash('err_send', "Wallet balance is lower than inflash amount!");
+          Session::flash('status', 'Wallet balance is lower than inflash amount!');      
+          Session::flash('msgType', "err");
           return back();
       }
       
       try
       {
-          $rec = User::where('username', trim($req->input('usn')))->get();
+          $rec = User::where('username', trim($req->inflash('usn')))->get();
           if(count($rec) < 1)
           {
-              Session::put('err_send', "Username record not found!");
-              Session::put('status', 'User record not found!');      
-              Session::put('msgType', "err");
+              Session::flash('err_send', "Username record not found!");
+              Session::flash('status', 'User record not found!');      
+              Session::flash('msgType', "err");
               return back();
           }
           
             
-          $amt = intval($req->input('s_amt'));
+          $amt = intval($req->inflash('s_amt'));
             
             
           $rec[0]->wallet += $amt;
           $rec[0]->save();
           
-          $user->wallet -=  intval($req->input('s_amt'));
+          $user->wallet -=  intval($req->inflash('s_amt'));
           $user->save();
           
           $rc = new fund_transfer;
           $rc->from_usr = $user->username;
-          $rc->to_usr = trim($req->input('usn'));
-          $rc->amt = intval($req->input('s_amt'));
+          $rc->to_usr = trim($req->inflash('usn'));
+          $rc->amt = intval($req->inflash('s_amt'));
           $rc->save();
           
           $act = new activities;
-          $act->action = "User send fund of ".$user->currency.intval($req->input('s_amt'))." to ".trim($req->input('usn'));
+          $act->action = "User send fund of ".$user->currency.intval($req->inflash('s_amt'))." to ".trim($req->inflash('usn'));
           $act->user_id = $user->id;
           $act->save();
           
-          Session::put('status', 'Your transaction was successful');      
-          Session::put('msgType', "suc");
+          Session::flash('status', 'Your transaction was successful');      
+          Session::flash('msgType', "suc");
           return back();
       }
       catch(\Exception $e)
       {
-          Session::put('err_send', "Error sending fund to another user!");
-          Session::put('status', 'Error sending fund to another user!');      
-          Session::put('msgType', "err");
+          Session::flash('err_send', "Error sending fund to another user!");
+          Session::flash('status', 'Error sending fund to another user!');      
+          Session::flash('msgType', "err");
           return back();
       }
 
@@ -1398,8 +1401,8 @@ class userController extends Controller
         $bank = new banks;	                
       	$bank->user_id = $user->id;
       	$bank->Account_name = "BTC";
-      	$bank->Account_number = $req->input('coin_wallet');
-      	$bank->Bank_Name = $req->input('coin_host');
+      	$bank->Account_number = $req->inflash('coin_wallet');
+      	$bank->Bank_Name = $req->inflash('coin_host');
         $bank->save();
 
         $act = new activities;
@@ -1469,14 +1472,14 @@ class userController extends Controller
   public function pay_btc_amt(Request $req){
     
     $user = Auth::User();
-    if($req->input('amount') < env('MIN_DEPOSIT'))
+    if($req->inflash('amount') < env('MIN_DEPOSIT'))
     {
       return back()->With(['toast_msg' => 'Amount must be greater or equal to '.env('MIN_DEPOSIT').' '.$this->st->currency, 'toast_type' => 'err']);
     }
 
     if(!empty($user))
     {
-      $cost = (FLOAT) $req->input('amount');
+      $cost = (FLOAT) $req->inflash('amount');
       $currency_base = 'USD';
       $currency_received = $req['coin'];
       $extra_details = "Maxprofit";
@@ -1550,7 +1553,7 @@ class userController extends Controller
     $user = Auth::User();
     if(!empty($user))
     {
-      if($req->input('amt') < env('MIN_DEPOSIT'))
+      if($req->inflash('amt') < env('MIN_DEPOSIT'))
       {
         return back()->With(['toast_msg' => 'Amount must be greater or equal to '.env('MIN_DEPOSIT').' '.$this->st->currency, 'toast_type' => 'err']);
       }
@@ -1559,10 +1562,10 @@ class userController extends Controller
         $paymt = new deposits;
         $paymt->user_id = $user->id;
         $paymt->usn = $user->username;
-        $paymt->amount = $req->input('amt') * $st->currency_conversion;
+        $paymt->amount = $req->inflash('amt') * $st->currency_conversion;
         $paymt->currency = $st->currency;
-        $paymt->account_name = $req->input('account_name');
-        $paymt->account_no = $req->input('account_no');
+        $paymt->account_name = $req->inflash('account_name');
+        $paymt->account_no = $req->inflash('account_no');
         $paymt->bank = "Bank";
         $paymt->url =  "";
         $paymt->status = 0;
@@ -1633,8 +1636,8 @@ class userController extends Controller
         $ticket = new ticket([
           'ticket_id' => $user->id.strtotime(date('Y-m-d H:i:s')),
           'user_id' => $user->id,
-          'title' => $req->input('title'),
-          'msg' => $req->input('msg'),
+          'title' => $req->inflash('title'),
+          'msg' => $req->inflash('msg'),
           'status' => 1
         ]);
         $ticket->save();
@@ -1732,7 +1735,7 @@ class userController extends Controller
     $user = Auth::User();
     if(!empty($user))
     {
-      $close_check = ticket::find($req->input('ticket_id'));
+      $close_check = ticket::find($req->inflash('ticket_id'));
       if(empty($close_check) || $close_check->status == 0)
       {
         return json_encode([
@@ -1757,10 +1760,10 @@ class userController extends Controller
       try
       {        
         $comment = new comments([
-          'ticket_id' =>$req->input('ticket_id'),
+          'ticket_id' =>$req->inflash('ticket_id'),
           'sender' => 'user',
           'sender_id' => $user->id,       
-          'message' => $req->input('msg'), 
+          'message' => $req->inflash('msg'), 
         ]);
         $comment->save();
 
@@ -1775,7 +1778,7 @@ class userController extends Controller
         return json_encode([
           'toast_msg' => 'Successful! ',
           'toast_type' => 'suc',          
-          'comment_msg' => $req->input('msg'),
+          'comment_msg' => $req->inflash('msg'),
           'comment_time' => date('Y-m-d H:i:s'),
           'user_img' => $user->img
         ]);

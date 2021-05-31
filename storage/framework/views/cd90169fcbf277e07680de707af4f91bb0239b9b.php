@@ -252,7 +252,7 @@
 					<li class="nav-item">
 						<a href="/<?php echo e($user->username); ?>/downlines">
 							<i class="fas fa-users"></i>
-							<p>Downlines</p>
+							<p>Referrals</p>
 						</a>							
 					</li>
 					<li class="nav-item">

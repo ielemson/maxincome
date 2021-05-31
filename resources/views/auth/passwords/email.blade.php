@@ -1,74 +1,111 @@
-@extends('inc.auth_layout')
- <title>Password Recovery - {{env('APP_NAME')}}</title>
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Maxincome - Login</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{{asset('login_css/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css')}}">
+  <link rel="stylesheet" href="{{asset('login_css/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css')}}">
+  <link rel="stylesheet" href="{{asset('login_css/vendors/css/vendor.bundle.base.css')}}">
+  <link rel="stylesheet" href="{{asset('login_css/vendors/css/vendor.bundle.addons.css')}}">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{{asset('login_css/css/style.css')}}">
+  <!-- endinject -->
+  <link href="/img/fav-icon.png" rel="icon">
+  <link href="img/fav-icon.png" rel="apple-touch-icon">
+</head>
+
 <body>
-    <div>
-        <img src="/img/adult.jpg" class="fixedOverlayIMG">         
-        <div class="fixedOeverlayBG"></div>
-        <div class="container">
-            <div class="row pad_T90">
-                <div class="col-md-4"></div>
-                <div class="col-md-4 card">
-                    <div class="card-header" align="center">
-                        <img src="/img/{{$settings->site_logo}}" alt="{{$settings->site_title}}" class="login_logo"> 
-                        <br>
-                        <h3><i class="fa fa-key"></i> Password Recovery</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="">                    
-                            @if(Session::has('msgType') && Session::get('msgType') == 'err')                                
-                                <div class="alert alert-danger">
-                                    {{Session::get('status')}}
-                                </div>
-                                {{Session::forget('msgType')}}
-                                {{Session::forget('status')}}
 
-                            @elseif(Session::has('msgType') && Session::get('msgType') == 'suc')
-                            
-                                <div class="alert alert-success">
-                                    {{Session::get('status')}}
-                                </div>
-                                {{Session::forget('msgType')}}
-                                {{Session::forget('status')}}                                
-                            @else
-                            @endif
-                            <div>
-                                <form method="POST" action="/user/request/change/pwd">
-                                    @csrf
-                                    <div class="form-group row">
-                                        <label for="email">{{ __('Email Address') }}</label>                                        
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+     <!--====== PREALOADER  START ======-->
+     <div class="preloader">
+      <div class="preloader-body">
+          <div class="cssload-container">
+          <div class="cssload-speeding-wheel"></div>
+          </div>
+          <p>Loading...</p>
+      </div>
+  </div>
+  <!--====== PREALOADER  ENDS  ======-->
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+        <div class="row w-100 mx-auto">
+          <div class="col-lg-4 mx-auto">
+            <div class="auto-form-wrapper">
 
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        
-                                    </div>
 
-                                    <div class="form-group row mb-0">
-                                        <div class=" " align="center">
-                                            <button type="submit" class="collcc btn btn-primary">
-                                                {{ __('Reset Password') }}
-                                        </div>
-                                        <br><br>                                     
-                                    </div>
-                                    <div class="form-group row mb-0">                                      
-                                        <a href="/login">
-                                            <i class="fa fa-arrow-left"></i> {{ __('Back to Login') }}
-                                        </a>                                    
-                                        <br><br>                                     
-                                    </div>
-                                     
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              <div class="mb-3 mx-auto" align="center">
+                <img src="/img/fav-icon.png" alt="{{$settings->site_title}}" class="img-responsive" style="width: 10%"> 
+                <br>
+                {{-- <h3><i class="fa fa-key"></i> Password Recovery</h3> --}}
             </div>
-            <br><br>
-        </div>
 
+            
+            @include('partials._alerts')
+
+              <form method="POST" action="{{route('reset_password')}}">
+                @csrf
+                <div class="form-group">
+                  <label for="email">{{ __('E-Mail Address') }}</label>
+                    <input id="email" type="email" class="form-control  form-control-lg @error('email') is-invalid @enderror " name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="E-Mail Address">
+
+                    @error('email')
+                        <span class="invalid-feedback" role="alert alert-danger" >
+                            {{ $message }}
+                        </span>
+                    @enderror
+                   
+                 
+                </div>
+               
+                <div class="form-group">
+            <div class="btn-group">
+              <button class="btn btn-primary submit-btn "> {{ __('Send me E-mail') }}</button>
+              &nbsp;
+              <a class="btn btn-warning submit-btn " href="{{route('login')}}">{{ __('Back to Login') }}</a>
+            </div>
+                </div>
+              </form>
+            </div>
+            <ul class="auth-footer">
+              <li><a href="#">Conditions</a></li>
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Terms</a></li>
+            </ul>
+            <p class="footer-text text-center">copyright © {{date('Y')}} MaxIncome Investment. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
     </div>
-@endsection
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  {{-- <script src="{{asset('login_css/vendors/js/vendor.bundle.base.js')}}"></script> --}}
+  {{-- <script src="{{asset('login_css/vendors/js/vendor.bundle.addons.js')}}"></script> --}}
+  <!-- endinject -->
+  <!-- inject:js -->
+  {{-- <script src="{{asset('login_css/js/template.js')}}"></script> --}}
+  <!-- endinject -->
+
+  <script>
+    $(window).on('load',function(){
+    setTimeout(function(){ // allowing 3 secs to fade out loader
+    $('.preloader').fadeOut('slow');
+    },2000);
+    });
+    </script>
+</body>
+
+
+
+</html>

@@ -38,6 +38,14 @@
                 <div class="row w-100 mx-auto">
                     <div class="col-lg-6 mx-auto">
                         <div class="auto-form-wrapper">
+
+                            <div class=" mb-3 mx-auto" align="center">
+                                <img src="/img/fav-icon.png" alt="<?php echo e($settings->site_title); ?>" class="img-responsive" style="width: 10%"> 
+                                <br>
+                                
+                            </div>
+                
+
                             <?php echo $__env->make('partials._alerts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                             <form method="POST" action="<?php echo e(route('register')); ?>">

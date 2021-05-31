@@ -107,7 +107,8 @@ Route::get('/notification/{id}', 'userController@notifications_read');
 
 
 Route::get('/user/verify/btc/payment', 'userController@btc_payment_suc');
-Route::get('/reset/password/{username}/{token}', 'userController@pwd_req_verify');
+// Route::get('/reset/password/{username}/{token}', 'userController@pwd_req_verify');
+Route::get('/reset/password/{username}/{token}', 'ForgotPasswordController@get_token_password');
 Route::get('/registration/confirm/{usr}/{code}', 'userController@verify_reg');
 Route::get('/user/payment/{payAmt}/successful', 'userController@payment_suc')->middleware('auth');
 Route::get('/user/update/readmsg/{id}', 'userController@readmsg_up')->middleware('auth');
@@ -115,6 +116,9 @@ Route::get('/user/get/states/{id}', 'userController@states');
 Route::get('/user/get/countryCode/{id}', 'userController@countryCode');
 Route::get('/user/remove/bankaccount/{id}', 'userController@deleteBankAccount')->middleware('auth');
 
+
+Route::post('/reset/password', 'ForgotPasswordController@reset_password')->name('reset_password');
+Route::post('/reset/pswd/{token}', 'ForgotPasswordController@reset_user_pass')->name('reset_user_pass');
 Route::post('/user/wallet/bank_deposit', 'userController@bank_deposit')->middleware('auth');
 Route::post('/user/send/fund', 'userController@user_send_fund')->middleware('auth');
 Route::post('/user/request/change/pwd', 'userController@user_req_pwd')->middleware('auth');
