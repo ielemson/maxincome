@@ -21,10 +21,10 @@
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>MaxIncome Investment<span>.</span></h3>
             <p>
-              >11 Ojulowo lmoshe Street  <br>
+              11 Ojulowo lmoshe Street  <br>
               Anifowose Ikeja off Oduyemi street,<br>
               Lagos Nigeria.<br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Phone:</strong> +234809 950 0028<br>
               <strong>Email:</strong> info@maxincome.org<br>
             </p>
           </div>
@@ -43,17 +43,17 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Services</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Investment</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Heavy Duty </a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Purchase and Sales</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Social Networks</h4>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+            <p>You can reach us through our social media handle..</p>
             <div class="social-links mt-3">
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
