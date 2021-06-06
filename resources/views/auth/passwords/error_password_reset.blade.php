@@ -1,82 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
+  
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Maxincome - Login</title>
-  <!-- plugins:css -->
-  <link rel="stylesheet" href="{{asset('login_css/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css')}}">
-  <link rel="stylesheet" href="{{asset('login_css/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css')}}">
-  <link rel="stylesheet" href="{{asset('login_css/vendors/css/vendor.bundle.base.css')}}">
-  <link rel="stylesheet" href="{{asset('login_css/vendors/css/vendor.bundle.addons.css')}}">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="{{asset('login_css/css/style.css')}}">
-  <!-- endinject -->
-  <link href="/img/fav-icon.png" rel="icon">
-  <link href="img/fav-icon.png" rel="apple-touch-icon">
-</head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Maincome - Reset Password</title>
+    <meta name="description" content="maincome investment login page">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="/login-assets/vendors/bootstrap/css/bootstrap.min.css">
 
-<body>
+        <!-- theme stylesheet-->
+        <link rel="stylesheet" href="/login-assets/css/premium.css" id="theme-stylesheet">
+        <link rel="stylesheet" href="{{asset('login-assets/css/auth.css')}}">
+        <link href="/img/fav-icon.png" rel="icon">
+        <link href="img/fav-icon.png" rel="apple-touch-icon">
+  
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/fav-icon.png">
 
-     <!--====== PREALOADER  START ======-->
-     <div class="preloader">
-      <div class="preloader-body">
-          <div class="cssload-container">
-          <div class="cssload-speeding-wheel"></div>
-          </div>
-          <p>Loading...</p>
-      </div>
-  </div>
-  <!--====== PREALOADER  ENDS  ======-->
-  <div class="container-scroller">
-    <div class="container-fluid page-body-wrapper full-page-wrapper">
-      <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
-        <div class="row w-100 mx-auto">
-          <div class="col-lg-4 mx-auto">
-            <div class="auto-form-wrapper">
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+  </head>
+  <body>
 
-              <div class="mb-3 mx-auto" align="center">
-                <img src="/img/fav-icon.png" alt="{{$settings->site_title}}" class="img-responsive" style="width: 10%"> 
-                <br>
-       
+       <!--====== PREALOADER  START ======-->
+       <div class="preloader">
+        <div class="preloader-body">
+            <div class="cssload-container">
+            <div class="cssload-speeding-wheel"></div>
             </div>
-
-            @include('partials._alerts')
-    
-       <div class="alert alert-danger mb-3" role="alert">
-        {{'Error! Your token is invalid,contact admin'}}
+            <p>Loading...</p>
         </div>
-        <a class="btn btn-warning submit-btn btn-block mb-4" href="{{route('login')}}">{{ __('Back to Login') }}</a>
-       
-            </div>
-            <ul class="auth-footer">
-              <li><a href="#">Conditions</a></li>
-              <li><a href="#">Help</a></li>
-              <li><a href="#">Terms</a></li>
-            </ul>
-            <p class="footer-text text-center">copyright © {{date('Y')}} MaxIncome Investment. All rights reserved.</p>
-          </div>
-        </div>
-      </div>
-      <!-- content-wrapper ends -->
     </div>
-    <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
-  <!-- plugins:js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-  {{-- <script src="{{asset('login_css/vendors/js/vendor.bundle.base.js')}}"></script> --}}
-  {{-- <script src="{{asset('login_css/vendors/js/vendor.bundle.addons.js')}}"></script> --}}
-  <!-- endinject -->
-  <!-- inject:js -->
-  {{-- <script src="{{asset('login_css/js/template.js')}}"></script> --}}
-  <!-- endinject -->
+    <!--====== PREALOADER  ENDS  ======-->
 
+    <div class="page login-page">
+    <div class="container d-flex align-items-center">
+        <div class="form-holder has-shadow">
+          <div class="row">
+            <!-- Logo & Information Panel-->
+            <div class="col-lg-6">
+              <div class="info d-flex align-items-center">
+                <div class="content">
+                  <div class="logo">
+                    <img src="/img/maxincome-logo.png"/>
+                  </div>
+                  {{-- <p>Login or to start investing with us...</p> --}}
+                </div>
+              </div>
+            </div>
+            <!-- Form Panel    -->
+            <div class="col-lg-6 bg-white">
+              
+             
+              <div class="form d-flex align-items-center">
+                
+                <div class="content">
+                  {{-- ALERT MESSAGE SESSION --}}
+                  @include('partials._alerts')
+                  <form >
+                    @csrf
+                    
+                    <div class="form-group">
+                      <div class="alert alert-danger mb-3" role="alert">
+                        {{'Error! Your token is invalid,contact admin'}}
+                        </div>
+                        <a class="btn btn-warning submit-btn btn-block mb-4" href="{{route('login')}}">{{ __('Back to Login') }}</a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  <!-- JavaScript files-->
+  <script src="/login-assets/vendors/jquery/jquery.min.js"></script>
+  <script src="/login-assets/vendors/popper.js/umd/popper.min.js"> </script>
+  <script src="/login-assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/login-assets/vendors/jquery.cookie/jquery.cookie.js"> </script>
+  <script src="/login-assets/vendors/chart.js/Chart.min.js"></script>
+  <script src="/login-assets/vendors/jquery-validation/jquery.validate.min.js"></script>
+  <!-- Main File-->
+  <script src="/login-assets/js/front.js"></script>
   <script>
     $(window).on('load',function(){
     setTimeout(function(){ // allowing 3 secs to fade out loader
@@ -84,8 +94,6 @@
     },2000);
     });
     </script>
-</body>
-
-
+  </body>
 
 </html>

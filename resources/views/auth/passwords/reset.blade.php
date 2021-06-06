@@ -1,109 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
+  
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Maxincome - Reset Password</title>
-  <!-- plugins:css -->
-  <link rel="stylesheet" href="{{asset('login_css/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css')}}">
-  <link rel="stylesheet" href="{{asset('login_css/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css')}}">
-  <link rel="stylesheet" href="{{asset('login_css/vendors/css/vendor.bundle.base.css')}}">
-  <link rel="stylesheet" href="{{asset('login_css/vendors/css/vendor.bundle.addons.css')}}">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="{{asset('login_css/css/style.css')}}">
-  <!-- endinject -->
-  <link href="/img/fav-icon.png" rel="icon">
-  <link href="img/fav-icon.png" rel="apple-touch-icon">
-</head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Maincome - Reset Password</title>
+    <meta name="description" content="maincome investment login page">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="/login-assets/vendors/bootstrap/css/bootstrap.min.css">
 
-<body>
+        <!-- theme stylesheet-->
+        <link rel="stylesheet" href="/login-assets/css/premium.css" id="theme-stylesheet">
+        <link rel="stylesheet" href="{{asset('login-assets/css/auth.css')}}">
+        <link href="/img/fav-icon.png" rel="icon">
+        <link href="img/fav-icon.png" rel="apple-touch-icon">
+  
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/fav-icon.png">
 
-     <!--====== PREALOADER  START ======-->
-     <div class="preloader">
-      <div class="preloader-body">
-          <div class="cssload-container">
-          <div class="cssload-speeding-wheel"></div>
-          </div>
-          <p>Loading...</p>
-      </div>
-  </div>
-  <!--====== PREALOADER  ENDS  ======-->
-  <div class="container-scroller">
-    <div class="container-fluid page-body-wrapper full-page-wrapper">
-      <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
-        <div class="row w-100 mx-auto">
-          <div class="col-lg-4 mx-auto">
-            <div class="auto-form-wrapper">
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+  </head>
+  <body>
 
-
-              <div class="mb-3 mx-auto" align="center">
-                <img src="/img/fav-icon.png" alt="{{$settings->site_title}}" class="img-responsive" style="width: 10%"> 
-                <br>
-       
+       <!--====== PREALOADER  START ======-->
+       <div class="preloader">
+        <div class="preloader-body">
+            <div class="cssload-container">
+            <div class="cssload-speeding-wheel"></div>
             </div>
-
-            @include('partials._alerts')
-
-       <form method="POST" action="{{route('reset_user_pass',$token)}}">
-        @csrf
-        <div class="form-group">
-          <label for="email">{{ __('New Password') }}</label>
-            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="New Password">
-
-            @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-          
+            <p>Loading...</p>
         </div>
-        <div class="form-group">
-          <label for="email">{{ __('Confirm Password') }}</label>
-            <input id="password-confirm" type="password" class="form-control form-control-lg" name="password_confirmation" required autocomplete="password_confirmation" placeholder="Confirm Password">
-     
-          
-        </div>
-       
-        <div class="form-group">
-    <div class="btn-group">
-      <button class="btn btn-primary submit-btn ">{{ __('Reset Your Password') }}</button>
-      &nbsp;
-      <a class="btn btn-warning submit-btn " href="{{route('login')}}">{{ __('Back to Login') }}</a>
     </div>
+    <!--====== PREALOADER  ENDS  ======-->
+
+    <div class="page login-page">
+    <div class="container d-flex align-items-center">
+        <div class="form-holder has-shadow">
+          <div class="row">
+            <!-- Logo & Information Panel-->
+            <div class="col-lg-6">
+              <div class="info d-flex align-items-center">
+                <div class="content">
+                  <div class="logo">
+                    <img src="/img/maxincome-logo.png"/>
+                  </div>
+                  {{-- <p>Login or to start investing with us...</p> --}}
+                </div>
+              </div>
+            </div>
+            <!-- Form Panel    -->
+            <div class="col-lg-6 bg-white">
+              
+             
+              <div class="form d-flex align-items-center">
+                
+                <div class="content">
+                  {{-- ALERT MESSAGE SESSION --}}
+                  @include('partials._alerts')
+                  <form method="POST" action="{{route('reset_user_pass',$token)}}">
+                    @csrf
+                    
+                    <div class="form-group">
+                      <input id="login-username" type="password" name="password" required data-msg="Password" class="input-material @error('password') is-invalid @enderror" value="{{ old('password') }}">
+                      <label for="login-username" class="label-material">Enter New Password</label>
+                      @error('password')
+                      <span class="invalid-feedback" role="alert alert-danger" >
+                          {{ $message }}
+                      </span>
+                  @enderror
+                    </div>
+                    <div class="form-group">
+                      <input id="login-password" type="password" name="password_confirmation" required data-msg="Please enter your password" class="input-material">
+                      <label for="login-password" class="label-material">{{ __('Confirm New Password') }}</label>
+                      @error('password')
+                      <span class="invalid-feedback" role="alert alert-danger" >
+                          {{ $message }}
+                      </span>
+                  @enderror
+                    </div>
+                   
+                    <button  class="btn btn-primary" type="submit">Update Password</button>
+            
+                    <a href="{{route('login')}}"  class="btn btn-warning">Back To Login</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     
-        </div>
-      </form>
-     
-     
-            </div>
-            <ul class="auth-footer">
-              <li><a href="#">Conditions</a></li>
-              <li><a href="#">Help</a></li>
-              <li><a href="#">Terms</a></li>
-            </ul>
-            <p class="footer-text text-center">copyright © {{date('Y')}} MaxIncome Investment. All rights reserved.</p>
-          </div>
-        </div>
-      </div>
-      <!-- content-wrapper ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
-  <!-- plugins:js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-  {{-- <script src="{{asset('login_css/vendors/js/vendor.bundle.base.js')}}"></script> --}}
-  {{-- <script src="{{asset('login_css/vendors/js/vendor.bundle.addons.js')}}"></script> --}}
-  <!-- endinject -->
-  <!-- inject:js -->
-  {{-- <script src="{{asset('login_css/js/template.js')}}"></script> --}}
-  <!-- endinject -->
-
+  <!-- JavaScript files-->
+  <script src="/login-assets/vendors/jquery/jquery.min.js"></script>
+  <script src="/login-assets/vendors/popper.js/umd/popper.min.js"> </script>
+  <script src="/login-assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/login-assets/vendors/jquery.cookie/jquery.cookie.js"> </script>
+  <script src="/login-assets/vendors/chart.js/Chart.min.js"></script>
+  <script src="/login-assets/vendors/jquery-validation/jquery.validate.min.js"></script>
+  <!-- Main File-->
+  <script src="/login-assets/js/front.js"></script>
   <script>
     $(window).on('load',function(){
     setTimeout(function(){ // allowing 3 secs to fade out loader
@@ -111,8 +110,6 @@
     },2000);
     });
     </script>
-</body>
-
-
+  </body>
 
 </html>

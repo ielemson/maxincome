@@ -26,7 +26,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/package.css" rel="stylesheet">
+  
 </head>
 
 <body>

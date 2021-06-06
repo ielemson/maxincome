@@ -24,7 +24,7 @@
 
 @if ($errors->any())
 <div class="alert alert-danger" role="alert">
-    {{'An was encountered, please contact admin if it persists!'}}
+    {{'An error has occured, please contact support if it persists!'}}
     </div>
 @endif
 
