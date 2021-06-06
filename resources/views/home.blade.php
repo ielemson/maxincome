@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Max Income Investment Ltd</title>
+  <title>Maxincome Investment</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -26,7 +26,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  {{-- <link href="assets/css/package.css" rel="stylesheet"> --}}
+  <link href="assets/css/package.css" rel="stylesheet">
 </head>
 
 <body>
@@ -204,14 +204,28 @@
           <p>Our packages are tailored to suite your plan with attractive ROI on your investment.</p>
         </div>
 
-        <div class="row">
+        
+          <section class="pricing py-5">
+            <div class="container">
+              <div class="row">
+                <!-- Free Tier -->
          @if (count($packages)>0)
          @include('partials.packages')
          @else
-           no Package found
+         <div class="col-lg-12">
+         <div class="card">
+           <div class="card-body">
+             <h6 class="card-price text-center">No Package Found<span class="period"></span></h6>
+             <hr>
+             
+           </div>
+         </div>
+       </div>
          @endif 
       
-
+        </div>
+      </div>
+    </section>
         </div>
 
       </div>
