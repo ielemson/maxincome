@@ -7,8 +7,8 @@
 				</h2>				
 			</div>
 			<div class="ml-md-auto py-2 py-md-0">
-				<a href="/{{$user->username}}/investments" class="btn btn-white btn-border btn-round mr-2" style="{{ $user->verification->status == true ? '' : ' pointer-events: none;' }}">Investments</a>
-				<a href="/{{$user->username}}/wallet" class="btn btn-secondary btn-round" style="{{ $user->verification->status == true ? '' : ' pointer-events: none;' }}">Deposit</a>
+				<a href="/{{$user->username}}/investments" class="btn btn-white btn-border btn-round mr-2" >Investments</a>
+				<a href="/{{$user->username}}/wallet" class="btn btn-secondary btn-round" >Deposit</a>
 			</div>
 		</div>
 	</div>

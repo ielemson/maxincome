@@ -19,8 +19,31 @@
           <li class="dropdown"><a href="#"><span>Account</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               
-              <li><a href="<?php echo e(route('login')); ?>">Login</a></li>
-              <li><a href="<?php echo e(route('register')); ?>">Register</a></li>
+              
+
+              <?php if(Route::has('login')): ?>
+                  <?php if(auth()->guard()->check()): ?>
+                  <?php
+                    $username = Auth::user()->name;
+                  ?>
+                  <li><a href="<?php echo e(route("user-dashboard",Auth::user()->username)); ?>">Dashboard</a></li> 
+
+                      <li class="li"><a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">Logout</a></li>
+                      <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST"
+                          style="display: none;">
+                          <?php echo csrf_field(); ?>
+                      </form>
+                  <?php else: ?>
+                      <li ><a href="<?php echo e(route('login')); ?>"> Login</a>
+                      </li>
+                      <li><a href="<?php echo e(route('register')); ?>">Register</a>
+                      </li>
+                     
+                  <?php endif; ?>
+              
+          <?php endif; ?>
+
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>

@@ -40,7 +40,7 @@
           <div class="col-lg-4 mx-auto">
             <div class="auto-form-wrapper">
 
-              <div class="mx-auto" align="center">
+              <div class="mx-auto mb-3" align="center">
                 <img src="/img/fav-icon.png" alt="{{$settings->site_title}}" class="img-responsive" style="width: 10%"> 
                 <br>
                 {{-- <h3><i class="fa fa-key"></i> Password Recovery</h3> --}}

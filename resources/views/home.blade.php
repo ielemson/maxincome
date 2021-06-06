@@ -26,7 +26,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
+  <link href="assets/css/package.css" rel="stylesheet">
 </head>
 
 <body>
@@ -205,7 +205,12 @@
         </div>
 
         <div class="row">
-       @include('partials.packages')
+         @if (count($packages)>0)
+         @include('partials.packages')
+         @else
+           no Package found
+         @endif 
+      
 
         </div>
 

@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>MaxProfit - Complete Investment Package</title>
+	<title>MaxIncome - Complete Investment Package</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon"  href="/img/<?php echo e($settings->site_logo); ?>" type="image/x-icon"/>
 
@@ -95,7 +95,7 @@
 				</button>
 				 <a href="/admin/home" style="color: #FFF;">
                     <img src="/img/<?php echo e($settings->site_logo); ?>" alt="<?php echo e($settings->site_title); ?>" style="height: 30px; width: 30px; z-index: 1; border-radius:50%;" />
-                    MaxProfit
+                    MaxIncome
                 </a>
 				<button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
 				<!-- <div class="nav-toggle">

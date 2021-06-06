@@ -24,10 +24,13 @@
 // })->name('login');
 
 
+use App\packages;
 
 Route::get('/', function () {
 
-	return view('home');
+	$packages = packages::all();
+	
+	return view('home',compact('packages'));
 });
 Route::get('/email-check', function () {
 
@@ -62,7 +65,7 @@ Route::get('/logout', function () {
 
 Route::get('/{username}/dashboard', function () {
     return view('user.dashboard');
-})->middleware('auth');
+})->middleware('auth')->name('user-dashboard');
 
 Route::get('/{username}/withdrawal', function () {
     return view('user.withdrawal');

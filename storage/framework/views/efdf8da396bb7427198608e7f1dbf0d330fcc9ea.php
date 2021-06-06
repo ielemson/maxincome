@@ -26,7 +26,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
+  <link href="assets/css/package.css" rel="stylesheet">
 </head>
 
 <body>
@@ -75,7 +75,12 @@
         </div>
 
         <div class="row">
-       <?php echo $__env->make('partials.packages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+         <?php if(count($packages)>0): ?>
+         <?php echo $__env->make('partials.packages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+         <?php else: ?>
+           no Package found
+         <?php endif; ?> 
+      
 
         </div>
 

@@ -1,47 +1,22 @@
-<div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-    <div class="icon-box">
-      <div class="icon"><i class="bx bxl-dribbble"></i></div>
-      <h4><a href="">Lorem Ipsum</a></h4>
-      <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-    </div>
-  </div>
+<?php $__currentLoopData = $packages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $package): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-    <div class="icon-box">
-      <div class="icon"><i class="bx bx-file"></i></div>
-      <h4><a href="">Sed ut perspiciatis</a></h4>
-      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-    </div>
-  </div>
 
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-    <div class="icon-box">
-      <div class="icon"><i class="bx bx-tachometer"></i></div>
-      <h4><a href="">Magni Dolores</a></h4>
-      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-    </div>
-  </div>
+      <div class="col-md-4 mt-2">
+          <div class="card">
+              <div class="card-body">
+                  <div class="card-img-actions"> <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png" class="card-img img-fluid" width="96" height="350" alt=""> </div>
+              </div>
+              <div class="card-body bg-light text-center">
+                  <div class="mb-2">
+                      <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true"><?php echo e($package->package_name); ?></a> </h6> <a href="#" class="text-muted" data-abc="true">Laptops & Notebooks</a>
+                  </div>
+                  <h3 class="mb-0 font-weight-semibold">$250.99</h3>
+                  <div> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> </div>
+                  <div class="text-muted mb-3">34 reviews</div> <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i>Purchase Package</button>
+              </div>
+          </div>
+      </div>
+     
+<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
-    <div class="icon-box">
-      <div class="icon"><i class="bx bx-world"></i></div>
-      <h4><a href="">Nemo Enim</a></h4>
-      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-    </div>
-  </div>
-
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
-    <div class="icon-box">
-      <div class="icon"><i class="bx bx-slideshow"></i></div>
-      <h4><a href="">Dele cardo</a></h4>
-      <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
-    </div>
-  </div>
-
-  <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
-    <div class="icon-box">
-      <div class="icon"><i class="bx bx-arch"></i></div>
-      <h4><a href="">Divera don</a></h4>
-      <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
-    </div>
-  </div><?php /**PATH C:\Users\ielemson\Desktop\Apps\Laravel\maxincome\resources\views/partials/packages.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Users\ielemson\Desktop\Apps\Laravel\maxincome\resources\views/partials/packages.blade.php ENDPATH**/ ?>

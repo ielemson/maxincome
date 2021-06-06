@@ -118,7 +118,7 @@
                             <tr>
                                 <td style="padding: 20px 30px 40px">
                                     <p>If you did not make this request, please contact us or ignore this message.</p>
-                                    <p style="margin: 0; font-size: 13px; line-height: 22px; color:#9ea8bb;">This is an automatically generated email please do not reply to this email. If you face any issues, please contact us at  help@icocrypto.com</p>
+                                    <p style="margin: 0; font-size: 13px; line-height: 22px; color:#9ea8bb;">This is an automatically generated email please do not reply to this email. If you face any issues, please contact us at  support@maxincome.org</p>
                                 </td>
                             </tr>
                         </tbody>
