@@ -20,9 +20,14 @@
             <ul>
               
               
-
+              <?php
+                $admin = session()->get('adm');
+              ?>
               <?php if(Route::has('login')): ?>
                   <?php if(auth()->guard()->check()): ?>
+                  <?php
+                    $username = Auth::user()->name;
+                  ?>
                   <li><a href="<?php echo e(route("user-dashboard",Auth::user()->username)); ?>">Dashboard</a></li> 
 
                       <li class="li"><a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault();
@@ -32,11 +37,25 @@
                           <?php echo csrf_field(); ?>
                       </form>
                   <?php else: ?>
-                      <li ><a href="<?php echo e(route('login')); ?>"> Login</a>
-                      </li>
-                      <li><a href="<?php echo e(route('register')); ?>">Register</a>
-                      </li>
-                      <li><a href="<?php echo e(route('adminLogin')); ?>">Admin</a>
+
+                          
+                          <?php if($admin): ?>
+                          <li><a href="<?php echo e(route('adm_dash')); ?>">Dashboard</a></li>
+        
+                          <li class="li"><a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">Logout</a></li>
+        
+                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST"
+                            style="display: none;">
+                            <?php echo csrf_field(); ?>
+                        </form>
+                          <?php else: ?>
+                          <li ><a href="<?php echo e(route('login')); ?>"> Login</a>
+                          </li>
+                          <li><a href="<?php echo e(route('register')); ?>">Register</a>
+                          <?php endif; ?>
+                          
+                   
                       </li>
                      
                   <?php endif; ?>

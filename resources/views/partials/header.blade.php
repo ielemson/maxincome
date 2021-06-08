@@ -21,9 +21,14 @@
               
               {{-- <li><a href="{{route('login')}}">Login</a></li>
               <li><a href="{{route('register')}}">Register</a></li> --}}
-
+              @php
+                $admin = session()->get('adm');
+              @endphp
               @if (Route::has('login'))
                   @auth
+                  @php
+                    $username = Auth::user()->name;
+                  @endphp
                   <li><a href="{{route("user-dashboard",Auth::user()->username)}}">Dashboard</a></li> 
 
                       <li class="li"><a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -33,11 +38,25 @@
                           @csrf
                       </form>
                   @else
-                      <li ><a href="{{ route('login') }}"> Login</a>
-                      </li>
-                      <li><a href="{{ route('register') }}">Register</a>
-                      </li>
-                      <li><a href="{{ route('adminLogin') }}">Admin</a>
+
+                          {{-- CHECK IF ADMIN IS LOGGED IN  --}}
+                          @if($admin)
+                          <li><a href="{{ route('adm_dash') }}">Dashboard</a></li>
+        
+                          <li class="li"><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">Logout</a></li>
+        
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                            style="display: none;">
+                            @csrf
+                        </form>
+                          @else
+                          <li ><a href="{{ route('login') }}"> Login</a>
+                          </li>
+                          <li><a href="{{ route('register') }}">Register</a>
+                          @endif
+                          {{-- CHECK IF ADMIN IS LOGGED IN --}}
+                   
                       </li>
                      
                   @endauth
