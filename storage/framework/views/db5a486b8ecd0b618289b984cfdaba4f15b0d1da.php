@@ -23,9 +23,6 @@
 
               <?php if(Route::has('login')): ?>
                   <?php if(auth()->guard()->check()): ?>
-                  <?php
-                    $username = Auth::user()->name;
-                  ?>
                   <li><a href="<?php echo e(route("user-dashboard",Auth::user()->username)); ?>">Dashboard</a></li> 
 
                       <li class="li"><a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault();
@@ -38,6 +35,8 @@
                       <li ><a href="<?php echo e(route('login')); ?>"> Login</a>
                       </li>
                       <li><a href="<?php echo e(route('register')); ?>">Register</a>
+                      </li>
+                      <li><a href="<?php echo e(route('adminLogin')); ?>">Admin</a>
                       </li>
                      
                   <?php endif; ?>

@@ -24,9 +24,6 @@
 
               @if (Route::has('login'))
                   @auth
-                  @php
-                    $username = Auth::user()->name;
-                  @endphp
                   <li><a href="{{route("user-dashboard",Auth::user()->username)}}">Dashboard</a></li> 
 
                       <li class="li"><a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -39,6 +36,8 @@
                       <li ><a href="{{ route('login') }}"> Login</a>
                       </li>
                       <li><a href="{{ route('register') }}">Register</a>
+                      </li>
+                      <li><a href="{{ route('adminLogin') }}">Admin</a>
                       </li>
                      
                   @endauth

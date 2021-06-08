@@ -78,19 +78,26 @@ class adminController extends Controller
 
   public function adm_login(Request $req)
   {
-    $adm = admin::where('email', $req->input('email'))->get();
-    if(count($adm) > 0)
+
+    $req->validate([
+      'email' => 'required',
+      'password' => 'required',
+  ]);
+
+    $adm = admin::where('email', $req->input('email'))->first();
+    // dd($adm);
+    if( $adm != null)
     {
-      if($adm[0]->status == 0)
+      if($adm->status == 0)
       {
         // Session::put('err2', "Account not activated!");
         return back()->with('error','Account not activated!');
       }
-      if(Hash::check($req->input('password'), $adm[0]->pwd))
+      if(Hash::check($req->input('password'), $adm->pwd))
       {
-        $adm = admin::find($adm[0]->id);
+        $adm = admin::find($adm->id);
         Session::put('adm', $adm); 
-        Auth::logout();
+        // Auth::logout();
         $act = new adminLog;
         $act->admin = $adm->email;
         $act->action = "Logged in to the system";
@@ -102,7 +109,7 @@ class adminController extends Controller
       else
       {
         // Session::put('err2', "Login password not correct!");
-        return back()->with('error','Incorrect login details');
+        return back()->with('error','Incorrect login data');
       }
       
     }
