@@ -32,6 +32,21 @@ Route::get('/', function () {
 	
 	return view('home',compact('packages'));
 });
+
+
+Route::get('contact-us', function () {
+
+	$packages = packages::all();
+	
+	return view('contactus',compact('packages'));
+});
+Route::get('/about-us', function () {
+
+	$packages = packages::all();
+	
+	return view('aboutus',compact('packages'));
+});
+
 Route::get('/email-check', function () {
 
 	return view('mail.email_verfication');

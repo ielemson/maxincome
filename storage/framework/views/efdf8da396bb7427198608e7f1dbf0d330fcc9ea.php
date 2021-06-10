@@ -1,292 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
+<!-- Mirrored from expert-themes.com/html/globex/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Jun 2021 13:07:18 GMT -->
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="utf-8">
+<title>Maxincome | Homepage</title>
+<!-- Stylesheets -->
+<link href="/landing-assets/css/bootstrap.css" rel="stylesheet">
+<link href="/landing-assets/css/style.css" rel="stylesheet">
+<link href="/landing-assets/css/responsive.css" rel="stylesheet">
 
-  <title>Maxincome Investment</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&amp;family=Nunito+Sans:wght@300;600;700;800;900&amp;display=swap" rel="stylesheet">
 
-  <!-- Favicons -->
-  <link href="/img/fav-icon.png" rel="icon">
-  <link href="img/fav-icon.png" rel="apple-touch-icon">
+<!-- Color Switcher Mockup -->
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<!-- Color Themes -->
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/package.css" rel="stylesheet">
+
+<link rel="shortcut icon" href="/landing-assets/images/favicon.png" type="image/x-icon">
+<link rel="icon" href="/landing-assets/images/favicon.png" type="image/x-icon">
+
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 </head>
 
-<body>
+<body class="hidden-bar-wrapper">
 
-  <!-- ======= Top Bar ======= -->
-  
+<div class="page-wrapper">
+ 	
+    <!-- Preloader -->
+    <div class="preloader"></div>
+ 	
+ 	<!-- Main Header-->
+   <?php echo $__env->make('landing-partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <!-- End Main Header -->
+	
+	<!-- Sidebar Cart Item -->
+<?php echo $__env->make('landing-partials.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+	<!-- END sidebar widget item -->
+	
+	<!-- Banner Section -->
+   <?php echo $__env->make('landing-partials.banner', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+	<!-- End Banner Section -->
+	
+	<!-- About Section -->
+<?php echo $__env->make('landing-partials.aboutus', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+	<!-- End About Section -->
+	
 
-  <!-- ======= Header ======= -->
-  <?php echo $__env->make('partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-  <!-- End Header -->
+	<!-- Call To Action Section -->
+	<section class="call-to-action-section" style="background-image: url(/landing-assets/images/background/pattern-3.png)">
+		<div class="auto-container">
+			<div class="row clearfix">
+				<!-- Heading Column -->
+				<div class="heading-column col-lg-8 col-md-12 col-sm-12">
+					<div class="inner-column">
+						<h2>Preparing For Your Business <br> Success With our investment Solution</h2>
+					</div>
+				</div>
+				<!-- Button Column -->
+				<div class="button-column col-lg-4 col-md-12 col-sm-12">
+					<div class="inner-column">
+						<a href="contact.html" class="theme-btn btn-style-two"><span class="txt">Meet With Us</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Call To Action Section -->
+	
+		<!-- Pricing Section -->
+	<section class="pricing-section">
+		<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title centered">
+				<div class="title">Our Pricing Plans</div>
+				<h2>A Monthly Project Fee <br> Price Plans</h2>
+			</div>
+			
+			<div class="row clearfix">
+			
+				<!-- Price Block -->
+				<div class="price-block col-lg-4 col-md-6 col-sm-12">
+					<div class="inner-box">
+						<h3>Basic</h3>
+						<div class="text">Designed for businesses with standard health requirements</div>
+						<div class="price">$ 70.00 <span>/ Per Month</span></div>
+						<ul class="price-list">
+							<li>24/7 Support</li>
+							<li>Advanced Options</li>
+							<li>16 GB Storage</li>
+							<li>Unlimited Support</li>
+						</ul>
+						<div class="btn-box">
+							<a href="contact.html" class="theme-btn btn-style-one"><span class="txt">Get Started</span></a>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Price Block -->
+				<div class="price-block col-lg-4 col-md-6 col-sm-12">
+					<div class="inner-box">
+						<h3>Standard</h3>
+						<div class="text">Designed for businesses with standard health requirements</div>
+						<div class="price">$ 90.00 <span>/ Per Month</span></div>
+						<ul class="price-list">
+							<li>24/7 Support</li>
+							<li>Advanced Options</li>
+							<li>16 GB Storage</li>
+							<li>Unlimited Support</li>
+						</ul>
+						<div class="btn-box">
+							<a href="contact.html" class="theme-btn btn-style-one"><span class="txt">Get Started</span></a>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Price Block -->
+				<div class="price-block col-lg-4 col-md-6 col-sm-12">
+					<div class="inner-box">
+						<h3>Professional</h3>
+						<div class="text">Designed for businesses with standard health requirements</div>
+						<div class="price">$ 100.00 <span>/ Per Month</span></div>
+						<ul class="price-list">
+							<li>24/7 Support</li>
+							<li>Advanced Options</li>
+							<li>16 GB Storage</li>
+							<li>Unlimited Support</li>
+						</ul>
+						<div class="btn-box">
+							<a href="contact.html" class="theme-btn btn-style-one"><span class="txt">Get Started</span></a>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+	</section>
+	<!-- End Pricing Section -->
 
-  <!-- ======= Hero Section ======= -->
-  <?php echo $__env->make('partials.slider', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-  <!-- End Hero -->
+	<!--Sponsors Section-->
+	<section class="sponsors-section">
+		<div class="auto-container">
+			
+			
+		</div>
+	</section>
+	<!--End Sponsors Section-->
+	
 
-  <main id="main">
+	
+	<!-- Main Footer -->
+   <?php echo $__env->make('landing-partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+</div>
+<!--End pagewrapper-->
 
-    <!-- ======= Featured Services Section ======= -->
-   <?php echo $__env->make('partials.process', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <!-- End Featured Services Section -->
+<!-- Color Palate / Color Switcher -->
 
-    <!-- ======= About Section ======= -->
-  <?php echo $__env->make('partials.aboutus', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <!-- End About Section -->
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-arrow-up"></span></div>
 
-    <!-- ======= Skills Section ======= -->
-    
-    <!-- End Skills Section -->
-
-    <!-- ======= Counts Section ======= -->
-    
-    <!-- End Counts Section -->
-
-    <!-- ======= Clients Section ======= -->
-    
-    <!-- End Clients Section -->
-
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Packages</h2>
-          <h3>Check our <span>Packages</span></h3>
-          <p>Our packages are tailored to suite your plan with attractive ROI on your investment.</p>
-        </div>
-
-        
-          <section class="pricing py-5">
-            <div class="container">
-              <div class="row">
-                <!-- Free Tier -->
-         <?php if(count($packages)>0): ?>
-         <?php echo $__env->make('partials.packages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-         <?php else: ?>
-         <div class="col-lg-12">
-         <div class="card">
-           <div class="card-body">
-             <h6 class="card-price text-center">No Package Found<span class="period"></span></h6>
-             <hr>
-             
-           </div>
-         </div>
-       </div>
-         <?php endif; ?> 
-      
-        </div>
-      </div>
-    </section>
-        </div>
-
-      </div>
-    </section><!-- End Services Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    
-    <!-- End Testimonials Section -->
-
-    <!-- ======= Portfolio Section ======= -->
-    
-    <!-- End Portfolio Section -->
-
-    <!-- ======= Team Section ======= -->
-    
-    <!-- End Team Section -->
-
-    <!-- ======= Pricing Section ======= -->
-    
-    <!-- End Pricing Section -->
-
-    <!-- ======= Frequently Asked Questions Section ======= -->
-    <section id="faq" class="faq section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>F.A.Q</h2>
-          <h3>Frequently Asked <span>Questions</span></h3>
-          <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
-        </div>
-
-        <div class="row justify-content-center">
-          <div class="col-xl-10">
-            <ul class="faq-list">
-
-              <li>
-                <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">Non consectetur a erat nam at lectus urna duis? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq1" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq2" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq3" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq4" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq5" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div data-bs-toggle="collapse" href="#faq6" class="collapsed question">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq6" class="collapse" data-bs-parent=".faq-list">
-                  <p>
-                    Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
-                  </p>
-                </div>
-              </li>
-
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Frequently Asked Questions Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-          <h3><span>Contact Us</span></h3>
-          <p>You can contact / visit us on the details below. We are available for all enquiries from 9:00am to 5:00pm</p>
-        </div>
-
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-6">
-            <div class="info-box mb-4">
-              <i class="bx bx-map"></i>
-              <h3>Our Address</h3>
-              <p>11 Ojulowo lmoshe Street Anifowose Ikeja off Oduyemi street, Lagos Nigeria.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-box  mb-4">
-              <i class="bx bx-envelope"></i>
-              <h3>Email Us</h3>
-              <p>info@maxincome.org</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-box  mb-4">
-              <i class="bx bx-phone-call"></i>
-              <h3>Call Us</h3>
-              <p>+234809 950 0028</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="col-lg-6 ">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.3972604440173!2d3.334216914863423!3d6.597450524129364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b91885887dc95%3A0xe09b2eab70194a4f!2s11%20Ojulowo%20Imoshe%20St%2C%20Ikeja!5e0!3m2!1sen!2sng!4v1622734231828!5m2!1sen!2sng"  frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen loading="lazy"></iframe>
-            
-          </div>
-
-          <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="col form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
- <?php echo $__env->make('partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-  <!-- End Footer -->
-
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+<script src="/landing-assets/js//jquery.js"></script>
+<script src="/landing-assets/js//popper.min.js"></script>
+<script src="/landing-assets/js//bootstrap.min.js"></script>
+<script src="/landing-assets/js//jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/landing-assets/js//jquery.fancybox.js"></script>
+<script src="/landing-assets/js//appear.js"></script>
+<script src="/landing-assets/js//parallax.min.js"></script>
+<script src="/landing-assets/js//tilt.jquery.min.js"></script>
+<script src="/landing-assets/js//jquery.paroller.min.js"></script>
+<script src="/landing-assets/js//owl.js"></script>
+<script src="/landing-assets/js//wow.js"></script>
+<script src="/landing-assets/js//nav-tool.js"></script>
+<script src="/landing-assets/js//jquery-ui.js"></script>
+<script src="/landing-assets/js//script.js"></script>
+<script src="/landing-assets/js//color-settings.js"></script>
 
 </body>
 
