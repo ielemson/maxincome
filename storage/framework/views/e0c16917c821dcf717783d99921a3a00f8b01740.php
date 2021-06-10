@@ -38,11 +38,11 @@
  	
  	<!-- Main Header-->
 	<!-- Main Header-->
-	@include('landing-partials.header')
+	<?php echo $__env->make('landing-partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <!-- End Main Header -->
 	
 	<!-- Sidebar Cart Item -->
-	@include('landing-partials.sidebar')
+	<?php echo $__env->make('landing-partials.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 	<!-- END sidebar widget item -->
 	
 	<!--Page Title-->
@@ -51,7 +51,7 @@
     	<div class="auto-container">
 			<h2>Contact us</h2>
 			<ul class="page-breadcrumb">
-				<li><a href="{{url('/')}}">home</a></li>
+				<li><a href="<?php echo e(url('/')); ?>">home</a></li>
 				<li>Contact us</li>
 			</ul>
         </div>
@@ -212,10 +212,10 @@
 						<div class="footer-widget links-widget">
 							<h5>Quick Links</h5>
 							<ul class="list-link">
-								<li><a href="{{url('/')}}">Home</a></li>
-                                    <li><a href="{{url('contact-us')}}">Contact <span class="ai-user"></span></a></li>
+								<li><a href="<?php echo e(url('/')); ?>">Home</a></li>
+                                    <li><a href="<?php echo e(url('contact-us')); ?>">Contact <span class="ai-user"></span></a></li>
                                     <li><a href="#">Services</a></li>
-                                    <li><a href="{{url('about-us')}}">About Us</a></li>
+                                    <li><a href="<?php echo e(url('about-us')); ?>">About Us</a></li>
 							</ul>
 						</div>
 					</div>
@@ -248,12 +248,12 @@
 				<div class="row clearfix">
 					<!-- Column -->
 					<div class="column col-lg-6 col-md-12 col-sm-12">
-						<div class="copyright">Copyright &copy; {{Date('Y')}} by maxincome ltd. All Rights Reserved.</div>
+						<div class="copyright">Copyright &copy; <?php echo e(Date('Y')); ?> by maxincome ltd. All Rights Reserved.</div>
 					</div>
 					<!-- Column -->
 					<div class="column col-lg-6 col-md-12 col-sm-12">
 						<ul class="footer-nav">
-							<li><a href="{{url('about-us')}}">About Us</a></li>
+							<li><a href="<?php echo e(url('about-us')); ?>">About Us</a></li>
 							<li><a href="#">Services</a></li>
 							<li><a href="#">Privacy</a></li>
 						</ul>
@@ -291,4 +291,4 @@
 
 </body>
 
-</html>
+</html><?php /**PATH C:\Users\ielemson\Desktop\Apps\Laravel\maxincome\resources\views/contactus.blade.php ENDPATH**/ ?>

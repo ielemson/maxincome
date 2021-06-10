@@ -103,7 +103,7 @@ class ForgotPasswordController extends Controller
             $usr->pswd_recovery_token = '';
             $usr->save();
             
-            return redirect()->route('login')->with('succes','Password reset Successful. You can now login.');  
+            return redirect()->route('login')->with('success','Password reset Successful. You can now login.');  
           }
           else
           {

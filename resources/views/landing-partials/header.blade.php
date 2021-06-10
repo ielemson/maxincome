@@ -1,32 +1,7 @@
 <header class="main-header header-style-one">
     	
     <!-- Header Top -->
-    <div class="header-top">
-        <div class="auto-container">
-            <div class="clearfix">
-                <!-- Top Left -->
-                <div class="top-left">
-                    <!-- Info List -->
-                    <ul class="info-list">
-                        <li><a href="mailto:info@maxincome.org"><span class="icon flaticon-email"></span> info@maxincome.org</a></li>
-                        <li><a href="tel:786-875-864-75"><span class="icon flaticon-telephone"></span>+234809 950 0028</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Top Right -->
-                <div class="top-right pull-right">
-                    <!-- Social Box -->
-                    <ul class="social-box">
-                        <li><a href="#" class="fa fa-facebook-f"></a></li>
-                        <li><a href="#" class="fa fa-twitter"></a></li>
-                        <li><a href="#" class="fa fa-dribbble"></a></li>
-                        <li><a href="#" class="fa fa-google"></a></li>
-                    </ul>
-                </div>
-                
-            </div>
-        </div>
-    </div>
+ 
     
     <!--Header-Upper-->
     <div class="header-upper">
@@ -52,21 +27,21 @@
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
                         <ul class="navigation clearfix">
-                            <li class="current "><a href="#">Home</a>
+                            <li class="{{ (request()->is('/')) ? 'current' : '' }}"><a href="#">Home</a>
                             </li>
-                            <li class="{{url('aboutus')}}"><a href="#">About</a>
+                            <li class="{{ (request()->is('about-us')) ? 'current' : '' }}"><a href="{{url('about-us')}}">About</a>
                             </li>
                             <li class=""><a href="#">Services</a>
                                 
                             </li>
-                            <li class="dropdown"><a href="#">Account</a>
+                            <li class="dropdown {{ (request()->is(['login','register'])) ? 'current' : '' }}"><a href="#">Account</a>
                                 <ul>
                                     <li><a href="{{route('login')}}">Login</a></li>
                                     <li><a href="{{route('register')}}">Register</a></li>
                                 </ul>
                             </li>
                             
-                            <li><a href="{{url('contactus')}}">Contact us</a></li>
+                            <li class="{{ (request()->is('contact-us')) ? 'current' : '' }}"><a href="{{url('contact-us')}}">Contact us</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -113,7 +88,7 @@
         <div class="close-btn"><span class="icon flaticon-multiply"></span></div>
         
         <nav class="menu-box">
-            <div class="nav-logo"><a href="index-2.html"><img src="/landing-assets/images/logo.png" alt="" title=""></a></div>
+            <div class="nav-logo"><a href="{{url('/')}}"><img src="/landing-assets/images/logo.png" alt="" title=""></a></div>
             <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
         </nav>
     </div><!-- End Mobile Menu -->

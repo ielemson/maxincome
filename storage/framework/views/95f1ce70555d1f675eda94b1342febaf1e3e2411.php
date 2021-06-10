@@ -35,7 +35,7 @@
                        
                     </div>
                 </div>
-                <a href="about.html" class="learn"><span class="arrow flaticon-long-arrow-pointing-to-the-right"></span>Learn More About Company</a>
+                <a href="<?php echo e(url('about-us')); ?>" class="learn"><span class="arrow flaticon-long-arrow-pointing-to-the-right"></span>Learn More About Company</a>
             </div>
             
         </div>

@@ -1,276 +1,412 @@
 <!DOCTYPE html>
 <html>
-  
+
+<!-- Mirrored from expert-themes.com/html/globex/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Jun 2021 13:08:59 GMT -->
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Maxincome - Register</title>
-    <meta name="description" content="maincome investment register page">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="robots" content="all,follow">
-    <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="/login-assets/vendors/bootstrap/css/bootstrap.min.css">
+<meta charset="utf-8">
+<title>Maxincome | Register</title>
+<!-- Stylesheets -->
+<link href="/landing-assets/css/bootstrap.css" rel="stylesheet">
+<link href="/landing-assets/css/style.css" rel="stylesheet">
+<link href="/landing-assets/css/responsive.css" rel="stylesheet">
 
-        <!-- theme stylesheet-->
-        <link rel="stylesheet" href="/login-assets/css/premium.css" id="theme-stylesheet">
-        <link rel="stylesheet" href="<?php echo e(asset('login-assets/css/auth.css')); ?>">
-        <link href="/img/fav-icon.png" rel="icon">
-        <link href="img/fav-icon.png" rel="apple-touch-icon">
-  
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="img/fav-icon.png">
-    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-  </head>
-  <body>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&amp;family=Nunito+Sans:wght@300;600;700;800;900&amp;display=swap" rel="stylesheet">
 
-        <!--====== PREALOADER  START ======-->
-        <div class="preloader">
-          <div class="preloader-body">
-              <div class="cssload-container">
-              <div class="cssload-speeding-wheel"></div>
-              </div>
-              <p>Loading...</p>
-          </div>
-      </div>
-      <!--====== PREALOADER  ENDS  ======-->
+<!-- Color Switcher Mockup -->
+<link href="/landing-assets/css/color-switcher-design.css" rel="stylesheet">
 
-    <div class="page login-page">
-      <div class="container d-flex align-items-center">
-        <div class="form-holder has-shadow">
-          <div class="row">
-            <!-- Logo & Information Panel-->
-            <div class="col-lg-6">
-              <div class="info d-flex align-items-center">
-                <div class="content">
-                  <div class="logo">
-                    <img src="/img/maxincome-logo.png"/>
-                  </div>
-                  
+<!-- Color Themes -->
+<link id="theme-color-file" href="/landing-assets/css/color-themes/default-theme.css" rel="stylesheet">
+
+<link rel="shortcut icon" href="/landing-assets/images/favicon.png" type="image/x-icon">
+<link rel="icon" href="/lading-assets/images/favicon.png" type="image/x-icon">
+
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="/landing-assets/js/respond.js"></script><![endif]-->
+</head>
+
+<body class="hidden-bar-wrapper">
+
+<div class="page-wrapper">
+ 	
+    <!-- Preloader -->
+    <div class="preloader"></div>
+ 	
+ 	<!-- Main Header-->
+	<!-- Main Header-->
+	<?php echo $__env->make('landing-partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <!-- End Main Header -->
+	
+	<!-- Sidebar Cart Item -->
+	<div class="xs-sidebar-group info-group">
+		<div class="xs-overlay xs-bg-black"></div>
+		<div class="xs-sidebar-widget">
+			<div class="sidebar-widget-container">
+				<div class="widget-heading">
+					<a href="#" class="close-side-widget">
+						X
+					</a>
+				</div>
+				<div class="sidebar-textwidget">
+					
+					<!-- Sidebar Info Content -->
+					<div class="sidebar-info-contents">
+						<div class="content-inner">
+							<div class="logo">
+								<a href="<?php echo e(url('/')); ?>"><img src="/lading-assets/images/logo-2.png" alt="" /></a>
+							</div>
+							<div class="content-box">
+								<h2>About Us</h2>
+								<p class="text">The argument in favor of using filler text goes something like this: If you use real content in the Consulting Process, anytime you reach a review point you’ll end up reviewing and negotiating the content itself and not the design.</p>
+								<a href="#" class="theme-btn btn-style-two"><span class="txt">Consultation</span></a>
+							</div>
+							<div class="contact-info">
+								<h2>Contact Info</h2>
+								<ul class="list-style-one">
+									<li><span class="icon fa fa-location-arrow"></span>Chicago 12, Melborne City, USA</li>
+									<li><span class="icon fa fa-phone"></span>(111) 111-111-1111</li>
+									<li><span class="icon fa fa-envelope"></span>globex@gmail.com</li>
+									<li><span class="icon fa fa-clock-o"></span>Week Days: 09.00 to 18.00 Sunday: Closed</li>
+								</ul>
+							</div>
+							<!-- Social Box -->
+							<ul class="social-box">
+								<li class="facebook"><a href="#" class="fa fa-facebook-f"></a></li>
+								<li class="twitter"><a href="#" class="fa fa-twitter"></a></li>
+								<li class="linkedin"><a href="#" class="fa fa-linkedin"></a></li>
+								<li class="instagram"><a href="#" class="fa fa-instagram"></a></li>
+								<li class="youtube"><a href="#" class="fa fa-youtube"></a></li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END sidebar widget item -->
+	
+	<!--Page Title-->
+    <section class="page-title">
+		<div class="pattern-layer-one" style="background-image: url(/landing-assets/images/background/pattern-16.png)"></div>
+    	<div class="auto-container">
+			<h2>Register Account</h2>
+			<ul class="page-breadcrumb">
+				<li><a href="<?php echo e(url('/')); ?>">home</a></li>
+				<li>Register Account</li>
+			</ul>
+        </div>
+    </section>
+    <!--End Page Title-->
+	
+
+
+    
+	<!--Register Section-->
+  <section class="register-section">
+    <div class="auto-container">
+        <div class="row clearfix">
+            
+            <!--Form Column-->
+            <div class="form-column column col-lg-8 col-md-12 col-sm-12 mx-auto">
+            
+                <div class="sec-title">
+                    <h2>Register Now</h2>
+        <div class="separate"></div>
                 </div>
-              </div>
-            </div>
-            <!-- Form Panel    -->
-            <div class="col-lg-6 bg-white">
-              
-             
-              <div class="form d-flex align-items-center">
                 
-                <div class="content">
-                  
+                <!--Login Form-->
+                <div class="styled-form login-form">
                   <?php echo $__env->make('partials._alerts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                  
                   <form method="POST" action="<?php echo e(route('register')); ?>">
                     <?php echo csrf_field(); ?>
-
-                    <div class="form-group">
-                            <input id="register-name" type="text" name="Fname" required  class="input-material <?php $__errorArgs = ['Fname'];
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="adon-icon"><span class="fa fa-user"></span></span>
+                                    <input type="text" name="Fname" value="" placeholder="First name" class="form-control <?php $__errorArgs = ['Fname'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>">
-                            <label for="register-name" class="label-material">First Name</label>
-
-                            <?php $__errorArgs = ['Fname'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Fname')); ?>" required>
+                                    <?php $__errorArgs = ['Fname'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                <span class="invalid-feedback" role="alert alert-danger">
-                                    <strong><?php echo e($message); ?></strong>
-                                </span>
-                            <?php unset($message);
+                                    <span class="invalid-feedback" role="alert alert-danger" >
+                                        <?php echo e($message); ?>
+
+                                    </span>
+                                <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                        </div>
-
-                        <div class="form-group">
-                            <input id="reg-lname" type="text" name="Lname" required  class="input-material <?php $__errorArgs = ['Lname'];
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="adon-icon"><span class="fa fa-user"></span></span>
+                                    <input type="text" name="Lname" value="" placeholder="Last name" class="form-control <?php $__errorArgs = ['Lname'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>">
-                            <label for="reg-lname" class="label-material">Last Name</label>
-
-                            <?php $__errorArgs = ['Lname'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Lname')); ?>" required>
+                                    <?php $__errorArgs = ['Lname'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                <span class="invalid-feedback" role="alert alert-danger">
-                                    <strong><?php echo e($message); ?></strong>
-                                </span>
-                            <?php unset($message);
+                                    <span class="invalid-feedback" role="alert alert-danger" >
+                                        <?php echo e($message); ?>
+
+                                    </span>
+                                <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                </div>
+                            </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="adon-icon"><span class="fa fa-user"></span></span>
+                                    <input type="text" name="username" value="" placeholder="User name*" class="form-control <?php $__errorArgs = ['username'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('username')); ?>" required>
+                                    <?php $__errorArgs = ['username'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="invalid-feedback" role="alert alert-danger" >
+                                        <?php echo e($message); ?>
+
+                                    </span>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="adon-icon"><span class="fa fa-envelope-o"></span></span>
+                                    <input type="email" name="email" value="" placeholder="Email Address*" class="form-control <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('email')); ?>" required>
+                                    <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="invalid-feedback" role="alert alert-danger" >
+                                        <?php echo e($message); ?>
+
+                                    </span>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="adon-icon"><span class="fa fa-unlock-alt"></span></span>
+                                    <input type="password" name="password" value="" placeholder="Enter Password*" class="form-control <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('password')); ?>" required>
+                                    <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="invalid-feedback" role="alert alert-danger" >
+                                        <?php echo e($message); ?>
+
+                                    </span>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <span class="adon-icon"><span class="fa fa-unlock-alt"></span></span>
+                                    <input type="password" name="password_confirmation"  placeholder="Confirm Password" required>
+                                    <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="invalid-feedback" role="alert alert-danger" >
+                                        <?php echo e($message); ?>
+
+                                    </span>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="clearfix">
+                            <div class="form-group pull-left">
+                                <button type="submit" class="theme-btn btn-style-three"><span class="txt">Register Now</span></button>
+                            </div>
+
+                            <div class="form-group pull-right">
+                                <a href="<?php echo e(route('login')); ?>" type="submit" class="theme-btn btn-style-three"><span class="txt">Login Here</span></a>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </form>
+                </div>
                 
-
-                    <div class="form-group">
-                            <input id="reg-username" type="text" name="username" required  class="input-material <?php $__errorArgs = ['username'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>">
-                            <label for="reg-username" class="label-material">Username</label>
-                            <?php $__errorArgs = ['username'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                <span class="invalid-feedback" role="alert alert-danger">
-                                    <strong><?php echo e($message); ?></strong>
-                                </span>
-                            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                        </div>
-
-                        <div class="form-group">
-                            <input id="register-email" type="text" name="email" required  class="input-material <?php $__errorArgs = ['email'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>">
-                            <label for="register-email" class="label-material">Email</label>
-                            <?php $__errorArgs = ['email'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                <span class="invalid-feedback" role="alert alert-danger">
-                                    <strong><?php echo e($message); ?></strong>
-                                </span>
-                            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                        </div>
-                    
-
-                    
-
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <input id="register-password" type="password" name="password" required  class="input-material <?php $__errorArgs = ['password'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>">
-                            <label for="register-password" class="label-material">Password</label>
-
-                            <?php $__errorArgs = ['password'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                <span class="invalid-feedback" role="alert alert-danger">
-                                    <strong><?php echo e($message); ?></strong>
-                                </span>
-                            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                        </div>
-
-                        <div class="col-sm-12">
-                            <input id="password_confirmation" type="password" name="password_confirmation" required  class="input-material <?php $__errorArgs = ['password_confirmation'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>">
-                            <label for="password_confirmation" class="label-material">Confirm Password</label>
-
-                            <?php $__errorArgs = ['password_confirmation'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                <span class="invalid-feedback" role="alert alert-danger">
-                                    <strong><?php echo e($message); ?></strong>
-                                </span>
-                            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                        </div>
-                    </div>
-    
-
-                    <div class="form-group">
-                        <?php $usn = App\User::where('username', Session::get('ref'))->get(); ?>
-
-                                <div class="row">
-                                    <div class="">
-                                        <input id="ref" type="hidden" class="form-control form-control-lg" name="ref"
-                                            value="<?php if(count($usn)> 0): ?> <?php echo e(Session::get('ref')); ?> <?php endif; ?>" >
-                                    </div>
-                                </div>
-
-                                <div class="">
-                                    <div class="" align="center">
-                                        <?php if($settings->user_reg == 1): ?>
-                                            <div class="btn-group">
-                                                <button class="btn btn-primary submit-btn ">Register</button>
-                                                &nbsp;
-                                                <a class="btn btn-warning submit-btn " href="/">Go back</a>
-                                            </div>
-                                        <?php else: ?>
-                                            <div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i>
-                                                Registration disabled by admin.</div>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
-                                <br/>
-                                <small>Already have an account? </small><a href="<?php echo e(route('login')); ?>" class="signup">Login</a>
-                    </div>
-                 
-                  </form>
-                   </div>
-              </div>
             </div>
-          </div>
+            
+           
+            
         </div>
-      </div>
-    
-  <!-- JavaScript files-->
-  <script src="/login-assets/vendors/jquery/jquery.min.js"></script>
-  <script src="/login-assets/vendors/popper.js/umd/popper.min.js"> </script>
-  <script src="/login-assets/vendors/bootstrap/js/bootstrap.min.js"></script>
-  <script src="/login-assets/vendors/jquery.cookie/jquery.cookie.js"> </script>
-  <script src="/login-assets/vendors/chart.js/Chart.min.js"></script>
-  <script src="/login-assets/vendors/jquery-validation/jquery.validate.min.js"></script>
-  <!-- Main File-->
-  <script src="/login-assets/js/front.js"></script>
-  <script>
-    $(window).on('load',function(){
-    setTimeout(function(){ // allowing 3 secs to fade out loader
-    $('.preloader').fadeOut('slow');
-    },2000);
-    });
-    </script>
-  </body>
+    </div>
+</section>
+<!--End Register Section-->
+	
+	<!-- Main Footer -->
+    <footer class="main-footer style-three">
+		<div class="pattern-layer-three" style="background-image: url(/landing-assets/images/background/pattern-14.png)"></div>
+		<div class="pattern-layer-four" style="background-image: url(/landing-assets/images/background/pattern-15.png)"></div>
+		<!--Waves end-->
+    	<div class="auto-container">
+        	<!--Widgets Section-->
+            <div class="widgets-section">
+            	<div class="row clearfix">
+                	
+					<!-- Footer Column -->
+					<div class="footer-column col-lg-4 col-md-6 col-sm-12">
+						<div class="footer-widget logo-widget">
+							<h5>About Globex</h5>
+							<div class="text">We are the best investment organization. Providing the highest quality investment services in Nigeria with years of experience and innovative achievements.</div>
+						</div>
+					</div>
+					
+					<!-- Footer Column -->
+					<div class="footer-column col-lg-3 col-md-6 col-sm-12">
+						<div class="footer-widget links-widget">
+							<h5>Quick Links</h5>
+							<ul class="list-link">
+								<li><a href="<?php echo e(url('/')); ?>">Home</a></li>
+                                    <li><a href="<?php echo e(url('contact-us')); ?>">Contact <span class="ai-user"></span></a></li>
+                                    <li><a href="#">Services</a></li>
+                                    <li><a href="<?php echo e(url('about')); ?>">About Us</a></li>
+							</ul>
+						</div>
+					</div>
+					
+                    <!-- Footer Column -->
+					<div class="footer-column col-lg-5 col-md-6 col-sm-12">
+						<div class="footer-widget subscribe-widget">
+							<h5>Subscribe Newsletter</h5>
+							<div class="text">Sign up today for hints, tips and <br> the latest product news</div>
+							<!--Emailed Form-->
+							<div class="emailed-form">
+								<form method="post" action="">
+									<div class="form-group">
+										<input type="email" name="email" value="" placeholder="Enter Your Email" required>
+										<button type="submit" class="theme-btn">Subscribe Now</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			
+		</div>
+		
+		<!-- Footer Bottom -->
+		<div class="footer-bottom">
+			<div class="auto-container">
+				<div class="row clearfix">
+					<!-- Column -->
+					<div class="column col-lg-6 col-md-12 col-sm-12">
+						<div class="copyright">Copyright &copy; <?php echo e(Date('Y')); ?> by maxincome ltd. All Rights Reserved.</div>
+					</div>
+					<!-- Column -->
+					<div class="column col-lg-6 col-md-12 col-sm-12">
+						<ul class="footer-nav">
+							<li><a href="<?php echo e(url('about')); ?>">About Us</a></li>
+							<li><a href="#">Services</a></li>
+							<li><a href="#">Privacy</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</footer>
+	
+	
+</div>
+<!--End pagewrapper-->
+
+
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-arrow-up"></span></div>
+
+<script src="/landing-assets/js/jquery.js"></script>
+<script src="/landing-assets/js/popper.min.js"></script>
+<script src="/landing-assets/js/bootstrap.min.js"></script>
+<script src="/landing-assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/landing-assets/js/jquery.fancybox.js"></script>
+<script src="/landing-assets/js/appear.js"></script>
+<script src="/landing-assets/js/parallax.min.js"></script>
+<script src="/landing-assets/js/tilt.jquery.min.js"></script>
+<script src="/landing-assets/js/jquery.paroller.min.js"></script>
+<script src="/landing-assets/js/owl.js"></script>
+<script src="/landing-assets/js/wow.js"></script>
+<script src="/landing-assets/js/validate.js"></script>
+<script src="/landing-assets/js/nav-tool.js"></script>
+<script src="/landing-assets/js/jquery-ui.js"></script>
+<script src="/landing-assets/js/script.js"></script>
+<script src="/landing-assets/js/color-settings.js"></script>
+
+</body>
 
 </html><?php /**PATH C:\Users\ielemson\Desktop\Apps\Laravel\maxincome\resources\views/auth/register.blade.php ENDPATH**/ ?>

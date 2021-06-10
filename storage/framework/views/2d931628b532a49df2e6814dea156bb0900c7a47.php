@@ -38,156 +38,117 @@
  	
  	<!-- Main Header-->
 	<!-- Main Header-->
-	@include('landing-partials.header')
+	<?php echo $__env->make('landing-partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <!-- End Main Header -->
 	
 	<!-- Sidebar Cart Item -->
-	@include('landing-partials.sidebar')
+	<div class="xs-sidebar-group info-group">
+		<div class="xs-overlay xs-bg-black"></div>
+		<div class="xs-sidebar-widget">
+			<div class="sidebar-widget-container">
+				<div class="widget-heading">
+					<a href="#" class="close-side-widget">
+						X
+					</a>
+				</div>
+				<div class="sidebar-textwidget">
+					
+					<!-- Sidebar Info Content -->
+					<div class="sidebar-info-contents">
+						<div class="content-inner">
+							<div class="logo">
+								<a href="<?php echo e(url('/')); ?>"><img src="/lading-assets/images/logo-2.png" alt="" /></a>
+							</div>
+							<div class="content-box">
+								<h2>About Us</h2>
+								<p class="text">The argument in favor of using filler text goes something like this: If you use real content in the Consulting Process, anytime you reach a review point you’ll end up reviewing and negotiating the content itself and not the design.</p>
+								<a href="#" class="theme-btn btn-style-two"><span class="txt">Consultation</span></a>
+							</div>
+							<div class="contact-info">
+								<h2>Contact Info</h2>
+								<ul class="list-style-one">
+									<li><span class="icon fa fa-location-arrow"></span>Chicago 12, Melborne City, USA</li>
+									<li><span class="icon fa fa-phone"></span>(111) 111-111-1111</li>
+									<li><span class="icon fa fa-envelope"></span>globex@gmail.com</li>
+									<li><span class="icon fa fa-clock-o"></span>Week Days: 09.00 to 18.00 Sunday: Closed</li>
+								</ul>
+							</div>
+							<!-- Social Box -->
+							<ul class="social-box">
+								<li class="facebook"><a href="#" class="fa fa-facebook-f"></a></li>
+								<li class="twitter"><a href="#" class="fa fa-twitter"></a></li>
+								<li class="linkedin"><a href="#" class="fa fa-linkedin"></a></li>
+								<li class="instagram"><a href="#" class="fa fa-instagram"></a></li>
+								<li class="youtube"><a href="#" class="fa fa-youtube"></a></li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- END sidebar widget item -->
 	
 	<!--Page Title-->
     <section class="page-title">
 		<div class="pattern-layer-one" style="background-image: url(/landing-assets/images/background/pattern-16.png)"></div>
     	<div class="auto-container">
-			<h2>Contact us</h2>
+			<h2>About us</h2>
 			<ul class="page-breadcrumb">
-				<li><a href="{{url('/')}}">home</a></li>
-				<li>Contact us</li>
+				<li><a href="<?php echo e(url('/')); ?>">home</a></li>
+				<li>About us</li>
 			</ul>
         </div>
     </section>
     <!--End Page Title-->
 	
-	<!-- Contact Info Section -->
-	<section class="contact-info-section">
-		<div class="auto-container">
-			<!-- Sec Title -->
-			<div class="title-box">
-				<div class="title">GET IN TOUCH</div>
-				<h2>We will be <br> glad to hear from you</h2>
-				<div class="text">For genereal enquires you can touch with our front desk supporting team <br> at <a href="mailto:info@maxincome.org">info@maxincome.org</a> or call on <a href="tel: +234809 950 0028"> +234809 950 0028</a></div>
-			</div>
-			
-			<div class="row clearfix">
-			
-				<!-- Info Column -->
-				<div class="info-column col-lg-4 col-md-6 col-sm-12">
-					<div class="inner-column">
-						<div class="content">
-							<div class="icon-box"><span class="flaticon-pin"></span></div>
-							<ul>
-								<li><strong>Address</strong></li>
-								<li>11 Ojulowo lmoshe St, Ikeja.</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				
-				<!-- Info Column -->
-				<div class="info-column col-lg-4 col-md-6 col-sm-12">
-					<div class="inner-column">
-						<div class="content">
-							<div class="icon-box"><span class="flaticon-phone-call"></span></div>
-							<ul>
-								<li><strong>Phone</strong></li>
-								<li>+234809 950 0028</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				
-				<!-- Info Column -->
-				<div class="info-column col-lg-4 col-md-6 col-sm-12">
-					<div class="inner-column">
-						<div class="content">
-							<div class="icon-box"><span class="flaticon-email-1"></span></div>
-							<ul>
-								<li><strong>E-Mail</strong></li>
-								<li>support@maxincome.org</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="lower-text">You can locate us using google map</div>
-		</div>
-	</section>
-	<!-- End Contact Info Section -->
+<!-- About Section -->
+<section class="about-section">
+    <div class="auto-container">
+        <!-- Sec Title -->
+        <div class="sec-title">
+            <div class="title">ABOUT COMPANY</div>
+            <h2>We are your trusted investment company with 100% guarantee on your investment capital.</h2>
+        </div>
+        <div class="row clearfix">
+            
+            <!-- Content Column -->
+            <div class="content-column col-lg-6 col-md-12 col-sm-12">
+                <div class="inner-column">
+                    <div class="text">
+                        Maxincome Investment Nigeria Limited, is an indigenous organization founded 2018 with the sole vision of imparting the lives of every Nigeria through investment partnership. Nigeria presents immense opportunities to both local and international investors in a fast-changing global economy. We invest in delivery of heavy-duty trucks, purchase and sale of heavy-duty trucks spare parts and lease of heavy-duty trucks for various purposes such as Construction, and Agriculture. Our investment portfolio is 100% safe and guarantee investment security. We also guarantee refund if requested. We are duly registered with CAC and follow all government / banking regulations for investment.
+                    </div>
+                    <div class="blocks-outer">
+                    
+                        
+                        
+                    </div>
+                    
+                    
+                    
+                </div>
+            </div>
+            
+            <!-- Images Column -->
+            <div class="images-column col-lg-6 col-md-12 col-sm-12">
+                <div class="inner-column" style="background-image: url(/landing-assets/images/icons/globe.png)">
+                    <div class="pattern-layer" style="background-image: url(/landing-assets/images/background/pattern-1.png)"></div>
+                    <div class="images-outer parallax-scene-1">
+                        <div class="image" data-depth="0.10">
+                            <img src="/assets/img/about-us.jpg" alt="" />
+                        </div>
+                       
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+</section>
+<!-- End About Section -->
 	
-	<!-- Map Section -->
-	<section class="contact-map-section">
-		<div class="auto-container">
-			<!-- Map Boxed -->
-			<div class="map-boxed">
-				<!--Map Outer-->
-				<div class="map-outer">
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.3972604440173!2d3.334216914863423!3d6.597450524129364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b91885887dc95%3A0xe09b2eab70194a4f!2s11%20Ojulowo%20Imoshe%20St%2C%20Ikeja!5e0!3m2!1sen!2sng!4v1622734231828!5m2!1sen!2sng"  frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen loading="lazy"></iframe>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End Map Section -->
-	
-	<!-- Contact Map Section -->
-	<section class="contact-map-section">
-		<div class="auto-container">
-			<!-- Sec Title -->
-			<div class="sec-title">
-				<div class="clearfix">
-					<div class="pull-left">
-						<div class="title">SEND YOUR MESSAGE</div>
-						<h2>Send Your Message</h2>
-					</div>
-					<div class="pull-right">
-						<div class="text">Our goal is to help our companies maintain or achieve best- in-class <br> positions in their respective industries and our team works.</div>
-					</div>
-				</div>
-			</div>
-			
-			<!-- Contact Form -->
-			<div class="contact-form">
-					
-				<!-- Contact Form -->
-				<form method="post" action="" id="contact-form">
-					<div class="row clearfix">
-					
-						<div class="form-group col-lg-6 col-md-6 col-sm-12">
-							<label>Your name *</label>
-							<input type="text" name="username" placeholder="" required>
-						</div>
-						
-						<div class="form-group col-lg-6 col-md-6 col-sm-12">
-							<label>Email address *</label>
-							<input type="text" name="email" placeholder="" required>
-						</div>
-						
-						<div class="form-group col-lg-6 col-md-6 col-sm-12">
-							<label>Phone number *</label>
-							<input type="text" name="phone" placeholder="" required>
-						</div>
-						
-						<div class="form-group col-lg-6 col-md-6 col-sm-12">
-							<label>Website</label>
-							<input type="text" name="subject" placeholder="" required>
-						</div>
-						
-						<div class="form-group col-lg-12 col-md-12 col-sm-12">
-							<label>Your Message *</label>
-							<textarea name="message" placeholder=""></textarea>
-						</div>
-						
-						<div class="form-group text-center col-lg-12 col-md-12 col-sm-12">
-							<button class="theme-btn btn-style-three" type="submit" name="submit-form"><span class="txt">Send Now</span></button>
-						</div>
-						
-					</div>
-				</form>
-			</div>
-			<!-- End Contact Form -->
-			
-		</div>
-	</section>
-	<!-- End Contact Map Section -->
 	
 	<!-- Main Footer -->
     <footer class="main-footer style-three">
@@ -212,10 +173,10 @@
 						<div class="footer-widget links-widget">
 							<h5>Quick Links</h5>
 							<ul class="list-link">
-								<li><a href="{{url('/')}}">Home</a></li>
-                                    <li><a href="{{url('contact-us')}}">Contact <span class="ai-user"></span></a></li>
+								<li><a href="<?php echo e(url('/')); ?>">Home</a></li>
+                                    <li><a href="<?php echo e(url('contact-us')); ?>">Contact <span class="ai-user"></span></a></li>
                                     <li><a href="#">Services</a></li>
-                                    <li><a href="{{url('about-us')}}">About Us</a></li>
+                                    <li><a href="<?php echo e(url('about')); ?>">About Us</a></li>
 							</ul>
 						</div>
 					</div>
@@ -248,12 +209,12 @@
 				<div class="row clearfix">
 					<!-- Column -->
 					<div class="column col-lg-6 col-md-12 col-sm-12">
-						<div class="copyright">Copyright &copy; {{Date('Y')}} by maxincome ltd. All Rights Reserved.</div>
+						<div class="copyright">Copyright &copy; <?php echo e(Date('Y')); ?> by maxincome ltd. All Rights Reserved.</div>
 					</div>
 					<!-- Column -->
 					<div class="column col-lg-6 col-md-12 col-sm-12">
 						<ul class="footer-nav">
-							<li><a href="{{url('about-us')}}">About Us</a></li>
+							<li><a href="<?php echo e(url('about')); ?>">About Us</a></li>
 							<li><a href="#">Services</a></li>
 							<li><a href="#">Privacy</a></li>
 						</ul>
@@ -291,4 +252,4 @@
 
 </body>
 
-</html>
+</html><?php /**PATH C:\Users\ielemson\Desktop\Apps\Laravel\maxincome\resources\views/aboutus.blade.php ENDPATH**/ ?>

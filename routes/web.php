@@ -35,16 +35,11 @@ Route::get('/', function () {
 
 
 Route::get('contact-us', function () {
-
-	$packages = packages::all();
-	
-	return view('contactus',compact('packages'));
+		return view('contactus');
 });
-Route::get('/about-us', function () {
 
-	$packages = packages::all();
-	
-	return view('aboutus',compact('packages'));
+Route::get('about-us', function () {	
+	return view('aboutus');
 });
 
 Route::get('/email-check', function () {

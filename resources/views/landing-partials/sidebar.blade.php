@@ -8,24 +8,26 @@
                 </a>
             </div>
             <div class="sidebar-textwidget">
-                
+            
                 <!-- Sidebar Info Content -->
                 <div class="sidebar-info-contents">
                     <div class="content-inner">
                         <div class="logo">
-                            <a href="index-2.html"><img src="/landing-assets/images/logo-2.png" alt="" /></a>
+                            <a href="{{url('/')}}"><img src="/landing-assets/images/logo-small.png" alt="" /></a>
                         </div>
                         <div class="content-box">
                             <h2>About Us</h2>
-                            <p class="text">The argument in favor of using filler text goes something like this: If you use real content in the Consulting Process, anytime you reach a review point you’ll end up reviewing and negotiating the content itself and not the design.</p>
-                            <a href="#" class="theme-btn btn-style-two"><span class="txt">Consultation</span></a>
+                            <p class="text"> We are the best investment organization. Providing the highest quality investment services in Nigeria with years of experience and innovative achievements.</p>
+                            <a href="{{url('contact-us')}}" class="theme-btn btn-style-two"><span class="txt">Consultation</span></a>
                         </div>
                         <div class="contact-info">
                             <h2>Contact Info</h2>
                             <ul class="list-style-one">
-                                <li><span class="icon fa fa-location-arrow"></span>Chicago 12, Melborne City, USA</li>
-                                <li><span class="icon fa fa-phone"></span>(111) 111-111-1111</li>
-                                <li><span class="icon fa fa-envelope"></span>globex@gmail.com</li>
+                                <li><span class="icon fa fa-location-arrow"></span>11 Ojulowo lmoshe Street
+                                    Anifowose Ikeja off Oduyemi street,
+                                    Lagos Nigeria.</li>
+                                <li><span class="icon fa fa-phone"></span>+234809 950 0028</li>
+                                <li><span class="icon fa fa-envelope"></span>info@maxincome.org</li>
                                 <li><span class="icon fa fa-clock-o"></span>Week Days: 09.00 to 18.00 Sunday: Closed</li>
                             </ul>
                         </div>
