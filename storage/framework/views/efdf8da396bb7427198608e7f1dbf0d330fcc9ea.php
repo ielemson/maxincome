@@ -101,7 +101,7 @@
 				<div class="logo-column col-lg-3 col-md-6 col-sm-12">
 					<div class="inner-column">
 						<div class="logo">
-							<a href="<?php echo e(route('login')); ?>"><img src="/landing-assets/images/logo-small.png" alt="" /></a>
+							<a href="<?php echo e(url('/')); ?>"><img src="/landing-assets/images/logo-small.png" alt="" /></a>
 						</div>
 					</div>
 				</div>

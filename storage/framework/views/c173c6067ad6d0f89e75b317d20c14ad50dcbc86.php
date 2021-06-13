@@ -38,6 +38,7 @@
                                 <ul>
                                     <li><a href="<?php echo e(route('login')); ?>">Login</a></li>
                                     <li><a href="<?php echo e(route('register')); ?>">Register</a></li>
+                                    <li><a href="<?php echo e(url('back-end')); ?>">Admin</a></li>
                                 </ul>
                             </li>
                             

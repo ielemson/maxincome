@@ -13,7 +13,7 @@
                 <div class="inner-box">
                     <h3>{{$package->package_name}}</h3>
                     <div class="text">Designed for monthly investment plans</div>
-                    <div class="price">{{$package->currency}} {{$package->max}}<span>/ Per Month</span></div>
+                    <div class="price">{{$package->currency}} {{$package->max}}</div>
                     <ul class="price-list">
                         <li>{{$package->period}} day period</li>
                         <li>{{$package->ref_bonus}} Referall bonus</li>

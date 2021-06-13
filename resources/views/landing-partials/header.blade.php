@@ -38,6 +38,7 @@
                                 <ul>
                                     <li><a href="{{route('login')}}">Login</a></li>
                                     <li><a href="{{route('register')}}">Register</a></li>
+                                    <li><a href="{{url('back-end')}}">Admin</a></li>
                                 </ul>
                             </li>
                             

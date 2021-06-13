@@ -13,7 +13,7 @@
                 <div class="inner-box">
                     <h3><?php echo e($package->package_name); ?></h3>
                     <div class="text">Designed for monthly investment plans</div>
-                    <div class="price"><?php echo e($package->currency); ?> <?php echo e($package->max); ?><span>/ Per Month</span></div>
+                    <div class="price"><?php echo e($package->currency); ?> <?php echo e($package->max); ?></div>
                     <ul class="price-list">
                         <li><?php echo e($package->period); ?> day period</li>
                         <li><?php echo e($package->ref_bonus); ?> Referall bonus</li>
